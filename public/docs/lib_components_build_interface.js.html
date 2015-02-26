@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Crux Source: lib/components/build/interface.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.dark.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.simplex.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header go-back">
+		<span class="nav-back">
+			<a href="http://crux.pearlhq.com/">Official site</a>
+		</span>
+	</div>
+	<div class="navbar-header">
+		<a href="index.html" class="crux-logo">
+			<img class="nav-logo" alt="&nbsp;" src="/assets/img/crux-green.png" data-reactid=".0.0.0.0.0.0" />
+		</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.html">crux</a></li><li><a href="crux.Build.html">crux.Build</a></li><li><a href="crux.Build.Angular.html">crux.Build.Angular</a></li><li><a href="crux.Database.html">crux.Database</a></li><li><a href="crux.Server.html">crux.Server</a></li><li><a href="crux.Store.html">crux.Store</a></li><li><a href="crux.util.html">crux.util</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.Application.html">crux.Application</a></li><li><a href="crux.Build.Angular.Core.html">crux.Build.Angular.Core</a></li><li><a href="crux.Build.Angular.Index.html">crux.Build.Angular.Index</a></li><li><a href="crux.Build.Angular.Templates.html">crux.Build.Angular.Templates</a></li><li><a href="crux.Build.Build.html">crux.Build.Build</a></li><li><a href="crux.Build.Commonjs.html">crux.Build.Commonjs</a></li><li><a href="crux.Build.Interface.html">crux.Build.Interface</a></li><li><a href="crux.Build.Less.html">crux.Build.Less</a></li><li><a href="crux.Build.Sass.html">crux.Build.Sass</a></li><li><a href="crux.Build.Templates.html">crux.Build.Templates</a></li><li><a href="crux.Component.html">crux.Component</a></li><li><a href="crux.Database.Mongo.html">crux.Database.Mongo</a></li><li><a href="crux.Database.Mongo.Schema.html">crux.Database.Mongo.Schema</a></li><li><a href="crux.Database.Sql.html">crux.Database.Sql</a></li><li><a href="crux.Database.Sql.Model.html">crux.Database.Sql.Model</a></li><li><a href="crux.Registry.html">crux.Registry</a></li><li><a href="crux.Server.Chain.html">crux.Server.Chain</a></li><li><a href="crux.Server.Request.html">crux.Server.Request</a></li><li><a href="crux.Server.Route.html">crux.Server.Route</a></li><li><a href="crux.Server.Server.html">crux.Server.Server</a></li><li><a href="crux.Server.Utils.html">crux.Server.Utils</a></li><li><a href="crux.Server.Validations.html">crux.Server.Validations</a></li><li><a href="crux.Store.Redis.html">crux.Store.Redis</a></li><li><a href="crux.util.install.html">crux.util.install</a></li><li><a href="crux.util.Parser.html">crux.util.Parser</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="interfaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Interfaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.Service.html">crux.Service</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#_">_</a></li><li><a href="global.html#__rootdir">__rootdir</a></li><li><a href="global.html#log">log</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+    		<h1 class="page-title">Source: lib/components/build/interface.js</h1>
+			
+
+		<h1 class="page-title">Source: lib/components/build/interface.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript ">var fs = require('fs'),
+  nodeFs = require('node-fs'),
+  util = require('util'),
+  async = require('async'),
+  watch,
+  EventEmitter = require('events').EventEmitter,
+  KUtil = require('../../util/util'),
+  path = require('path');
+
+/**
+ * This is the interface every build process must extend. The crux build component will not run with processes that do not extend this.&lt;br/>
+ * Although it provides common functionality, its methods may be overridden by any custom components.&lt;br/>
+ * &lt;b>Note&lt;/b> for a better visual representation of the API doc, we've excluded the @interface mark, but &lt;b>it is the Build Process Interface&lt;/b>
+ * @class crux.Build.Interface
+ * */
+var Interface = function CruxBuildInterface(extension) {
+  this.extension = extension;
+  if(!this.name) this.name = "CruxInterface";
+  this.paths = [];
+  this.config = {};     // The config of each build process will be set here by the parent component. Therefore, it will be accessible in init()
+  this.__output__exists = {};
+  EventEmitter.call(this.__proto__);
+};
+util.inherits(Interface, EventEmitter);
+
+/*
+* This function will be called after the instantiation of a build process. Useful to set various
+* settings inside it.
+* */
+Interface.prototype.init = function InitializeBuildProcess() {  };
+
+/*
+* This function will be executed if the build component is configured to auto-build all the registered
+* processes. Therefore, each process SHOULD (but not necessarily) implement this function.
+* NOTE: the run() function must also emit a "run" event, with this.emit('run'), when implemented
+* */
+Interface.prototype.run = function RunBuild(done) {
+  this.emit('run');
+  return done()
+};
+
+/*
+ * This function MUST be implemented by each build process that will extend it, as it will be called whenever
+ * one of the watched files is changed.
+ * Arguments
+ *     - changedFile -> the file that has just changed RELATIVE to changedPath
+ *     - changedContent -> the contents of the file that just changed.
+ *     - changedPath -> the full path of the file that changed.
+ * */
+Interface.prototype.build = function ExecuteBuild(changedFile, changedContent, changedPath) {
+  this.emit('build');
+  throw new Error("Crux.build: Process " + this.name + " failed to implement build()");
+};
+
+/*
+* This will start watching the configured paths for changed, and call the exec() function. It should NOT
+* be extended, as it provides generic functionality for every process.
+* */
+Interface.prototype.watch = function WatchPaths(done) {
+  var self = this,
+    _calls = [];
+  _.forEach(this.paths, function(watchPath) {
+    _calls.push(function(onWatchStart) {
+      self.__watch(watchPath, self.extension, function onChange(changedPath, content) {
+        var relPath = changedPath.replace(watchPath, '');
+        if(relPath.charAt(0) === '/' || relPath.charAt(0) === '\\') {
+          relPath = relPath.substr(1);
+        }
+        self.build(relPath, content, watchPath);
+        self.emit('change', relPath);
+      }, function onComplete(err) {
+        onWatchStart(err);
+      });
+    });
+    async.series(_calls, done);
+  });
+};
+
+/*
+* This is mostly an utility generic function that will star watching a directory for file changes.
+* Our watch() file uses this.
+* */
+Interface.prototype.__watch = function WatchDirectory(watchPath, ext, onChange, onWatchStart) {
+  var self = this;
+  if(!watch) {
+    watch = require('node-watch');
+  }
+  try {
+    watch(watchPath, {
+      recursive: true
+    }, function(changedPath) {
+      if(ext &amp;&amp; changedPath.indexOf(ext) === -1) return;
+      fs.readFile(changedPath, { encoding: 'utf8' }, function(err, content) {
+        var relPath = changedPath.replace(watchPath, '');
+        if(relPath.charAt(0) === "/" || relPath.charAt(0) === "\\") {
+        relPath = relPath.substr(1);
+        }
+        if(err) {
+          // If the file was deleted, we return content=null;
+          if(err.code === 'ENOENT') {
+            return onChange(relPath, null);
+          }
+          err.message = 'Crux.build.' + self.name + ': ';
+          return self.emit('error', err);
+        }
+        onChange(relPath, content);
+      });
+    });
+    onWatchStart &amp;&amp; onWatchStart();
+  } catch(err) {
+    return onWatchStart &amp;&amp; onWatchStart(err);
+  }
+};
+
+/*
+* This will try and read a given file path, calling back with its utf8 content.
+* */
+Interface.prototype.input = function ReadInputFile(path, callback, _shouldEmitError) {
+  var self = this;
+  fs.readFile(path, { encoding: 'utf8' }, function(err, content) {
+    if(err) {
+      if(_shouldEmitError !== false) {
+        err.message = 'Crux.build.' + this.name + ": Failed to read input file " + path + ': ' + err.message;
+        this.emit('error', err);
+      }
+      return callback.call(self,null);
+    }
+    callback.call(self, content);
+  }.bind(this));
+};
+
+/*
+* This will write the given content to the output file set in the process's configuration.
+* Arguments:
+*     - content - the content we want to output to the file.
+*     - onSuccess - if specified, the callback function that we will call after it was successfully outputted.
+*
+* */
+Interface.prototype.output = function GenerateOutput(content, _outputPath, _onSuccess) {
+  var _arg = arguments;
+  var outputPath = path.normalize(global['__rootdir'] + '/' + (typeof _outputPath === 'string' ? _outputPath : this.config.output)),
+    onSuccess = (typeof _outputPath === 'function' ? _outputPath : _onSuccess);
+  if(!outputPath) throw new Error('Crux.build.' + this.name + ': output path must be configured.');
+  if(this.__output__exists[outputPath]) {
+    fs.writeFile(outputPath, content, { encoding: 'utf8' }, function(err) {
+      if(err) {
+        err.message = 'Crux.build.' + this.name + ': Failed to write to output file: ' + err.message;
+        this.__output__exists[outputPath] = false;
+        return this.emit('error', err);
+      }
+      this.emit('build', outputPath);
+      if(typeof onSuccess === 'function') onSuccess();
+    }.bind(this));
+    return;
+  }
+  var directories = (outputPath.indexOf('/') !== -1 ? outputPath.split('/') : outputPath.split('\\'));
+  directories.pop();
+  var directory = path.normalize(directories.join('/') + '/'),
+    isOk = false;
+  try {
+    var stats = fs.lstatSync(directory);
+    if(stats.isDirectory()) {
+      isOk = true;
+    }
+  } catch(e) {
+    if(e.code !== 'ENOENT') {
+      err.message = 'Crux.build.' + this.name + ': Failed to check output file: ' + err.message;
+      this.__output__exists[outputPath] = false;
+      return this.emit('error', err);
+    }
+  }
+  if(isOk) {
+    this.__output__exists[outputPath] = true;
+    return this.output.apply(this, _arg);
+  }
+  nodeFs.mkdir(directory, 0777, true, function(err) {
+    if(err) {
+      err.message = 'Crux.build.' + this.name + ': Failed to create output directory: ' + err.message;
+      return this.emit('error', err);
+    }
+    this.__output__exists[outputPath] = true;
+    return this.output.apply(this, _arg);
+  }.bind(this));
+};
+
+/*
+* This will check if the building process is supported and has all its dependencies installed.
+* By default, we assume that the dependencies are up-to-date and there.
+* RETURNS:
+*   - falsy value when no dependencies are required, or all dependencies are installed.
+*   - ARRAY of dependencies, when at least one dependency is missing. This will be used afterwards to install dependencies.
+* NOTE:
+*   a dependency has the following format:
+*     "&lt;node_module_name>:&lt;node_module_version>"
+*     where
+*       node_module_name - the name of the npm module we want to install
+*       node_module_version - the specific version we want to install. By default it will be set to "lastest"
+* */
+Interface.prototype.packages = function HasBuildingDependencies() {
+  return null;
+};
+
+/*
+* The function will set the given paths in the arguments as the default process's paths. Because this
+* process only occurs once at load, we will use synchronous calls.
+* Note that this will also check the existance of the path before setting it.
+* NOTE: The path will always be relative to global['__rootdir']
+* Arguments:
+*   _paths - an array of path strings, or a single path as string.
+* */
+Interface.prototype.path = function SetProcessPath(_paths) {
+  var paths = (_paths instanceof Array ? _paths : [_paths]);
+  for(var i=0; i &lt; paths.length; i++) {
+    try {
+      var _path = path.normalize(global['__rootdir'] + "/" + paths[i]);
+      if(!fs.existsSync(_path)) continue;
+      this.paths.push(_path);
+    } catch(e){}
+  }
+  return this;
+};
+
+/*
+* Manually verify if the given path exists in the system. If it does exist,
+* it will return the FULL path, relative to the process's directory. Otherwise,
+* it will return null; This should be used in custom build processes that one
+* may implement.
+* */
+Interface.prototype.__fullPath = function GetFullPath(_path) {
+  if(typeof _path !== 'string' || _path === '') return null;
+  try {
+    _path = path.normalize(global['__rootdir'] + '/' + _path);
+    if(!fs.existsSync(_path)) return null;
+    if(_path.charAt(_path.length-1) !== '/' &amp;&amp; _path.charAt(_path.length-1) !== '\\') {
+      _path = path.normalize(_path);
+      var lastFile = _path.substr(_path.lastIndexOf('\\'));
+      if(lastFile.indexOf('.') === -1) lastFile += '\\';
+    }
+    return _path;
+  } catch(e) {
+    return null;
+  }
+};
+
+/*
+* Tries to read all the path's sub directories and returns them inside an array.
+* Returns:
+* array of {
+*   path: the source path from config,
+*   files: array of files in that dir.
+* }
+* */
+Interface.prototype.allPaths = function GetAllPaths() {
+  var dirs = [];
+  for(var i=0; i &lt; this.paths.length; i++) {
+    try {
+      var list = KUtil.readDirectory(this.paths[i], this.config.extension || undefined);
+      dirs.push({
+        path: this.paths[i],
+        files: list
+      });
+    } catch(e) {
+      e.message = 'Crux.build.' + this.name + ': Failed to read all source paths: ' + e.message;
+      this.emit('error', e);
+      return [];
+    }
+    return dirs;
+  }
+};
+
+/*
+* Each process that will place configuration in default, we will merge it with the received configurations.
+* */
+Interface.default = {};
+
+module.exports = Interface;</pre>
+	</article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a>
+	on Thu Feb 26th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

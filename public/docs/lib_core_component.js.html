@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Crux Source: lib/core/component.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.dark.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.simplex.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header go-back">
+		<span class="nav-back">
+			<a href="http://crux.pearlhq.com/">Official site</a>
+		</span>
+	</div>
+	<div class="navbar-header">
+		<a href="index.html" class="crux-logo">
+			<img class="nav-logo" alt="&nbsp;" src="/assets/img/crux-green.png" data-reactid=".0.0.0.0.0.0" />
+		</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.html">crux</a></li><li><a href="crux.Build.html">crux.Build</a></li><li><a href="crux.Build.Angular.html">crux.Build.Angular</a></li><li><a href="crux.Database.html">crux.Database</a></li><li><a href="crux.Server.html">crux.Server</a></li><li><a href="crux.Store.html">crux.Store</a></li><li><a href="crux.util.html">crux.util</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.Application.html">crux.Application</a></li><li><a href="crux.Build.Angular.Core.html">crux.Build.Angular.Core</a></li><li><a href="crux.Build.Angular.Index.html">crux.Build.Angular.Index</a></li><li><a href="crux.Build.Angular.Templates.html">crux.Build.Angular.Templates</a></li><li><a href="crux.Build.Build.html">crux.Build.Build</a></li><li><a href="crux.Build.Commonjs.html">crux.Build.Commonjs</a></li><li><a href="crux.Build.Interface.html">crux.Build.Interface</a></li><li><a href="crux.Build.Less.html">crux.Build.Less</a></li><li><a href="crux.Build.Sass.html">crux.Build.Sass</a></li><li><a href="crux.Build.Templates.html">crux.Build.Templates</a></li><li><a href="crux.Component.html">crux.Component</a></li><li><a href="crux.Database.Mongo.html">crux.Database.Mongo</a></li><li><a href="crux.Database.Mongo.Schema.html">crux.Database.Mongo.Schema</a></li><li><a href="crux.Database.Sql.html">crux.Database.Sql</a></li><li><a href="crux.Database.Sql.Model.html">crux.Database.Sql.Model</a></li><li><a href="crux.Registry.html">crux.Registry</a></li><li><a href="crux.Server.Chain.html">crux.Server.Chain</a></li><li><a href="crux.Server.Request.html">crux.Server.Request</a></li><li><a href="crux.Server.Route.html">crux.Server.Route</a></li><li><a href="crux.Server.Server.html">crux.Server.Server</a></li><li><a href="crux.Server.Utils.html">crux.Server.Utils</a></li><li><a href="crux.Server.Validations.html">crux.Server.Validations</a></li><li><a href="crux.Store.Redis.html">crux.Store.Redis</a></li><li><a href="crux.util.install.html">crux.util.install</a></li><li><a href="crux.util.Parser.html">crux.util.Parser</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="interfaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Interfaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.Service.html">crux.Service</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#_">_</a></li><li><a href="global.html#__rootdir">__rootdir</a></li><li><a href="global.html#log">log</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+    		<h1 class="page-title">Source: lib/core/component.js</h1>
+			
+
+		<h1 class="page-title">Source: lib/core/component.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript ">var util = require('util'),
+  extend = require('node.extend'),
+  path = require('path'),
+  EventEmitter = require('events').EventEmitter;
+
+function ComponentClass() {
+
+  var DEFAULTS = {},  // Default values for each component.
+      REQUIREMENTS = [],
+      LIBRARIES = {}, // Default libraries the component uses.
+      registryObj = null;  // This is the registryObj we're using
+
+  /**
+   * This is the basic class of a Crux component. Components can be used throughout the
+   * application and dependency injection can be added.
+   * @namespace crux
+   * @class crux.Component
+   * @extends events.EventEmitter
+   * */
+  var component = function CruxComponent(_options) {
+    this.name = "CruxComponent";
+    this.extendConfig(_options);
+    // We now attach the event emitter's attributes in the component, under prototype.
+    EventEmitter.call(this.__proto__);
+  };
+
+  util.inherits(component, EventEmitter);
+  component.prototype.__type = 'CruxComponent';
+
+  /**
+   * Extends the given options with the component's default values
+   *  @method
+   *  @memberof crux.Component
+   *  @param {object} options - the options object that will be used to extend the component's default configuration
+  * */
+  component.prototype.extendConfig = function ExtendConfiguration(_options) {
+    if(typeof _options !== 'object' || _options == null) _options = {};
+    _options = extend(true, JSON.parse(JSON.stringify(DEFAULTS)), _options);
+    this.config = _options;
+  };
+
+  /**
+   * When a component would like to enforce configuration settings on the developer, the __configuration property
+   * is set to true. This will not allow the initialization of the application, unless the component has a configuration object attached to it.
+   * @member {boolean} __configuration
+   * @memberof crux.Component
+   * */
+  component.prototype.__configuration = false;
+
+
+  /**
+   * This function is called when the component is initialized. It should be OVERRIDDEN by
+   * all components that extend this component.
+   * @abstract
+   * @memberof crux.Component
+   * @param {function} callback - the callback to be called when the component has finished loading.
+   * */
+  component.prototype.run = function RunComponent(_callback) {
+    return _callback();
+  };
+
+  /**
+  * This is the second function that is called in the creation cycle of a component.&lt;br>
+  * The cycle is:&lt;br>
+  *   -> new Component() (creates all components)&lt;br>
+  *   -> components.init() (initialize all, after creation)&lt;br>
+  *   -> components.run() ( runs all components, after init)&lt;br>
+  * @abstract
+  * @memberof crux.Component
+  * */
+  component.prototype.init = function InitializeComponent() {};
+
+  /**
+   * This will be executed when we want to stop a component. Again, this should be overridden by
+   * all components that extend it.
+   * @abstract
+   * @memberof crux.Component
+   * */
+  component.prototype.stop = function StopComponent(_callback) {
+    throw new Error("Component " + this.name + " failed to implement stop()");
+  };
+
+  /**
+   * This function is called whenever somebody tries to call registry.get() on a component.
+   * If we want to return other than the component's this context, it can be overridden.
+   * @abstract
+   * @memberof crux.Component
+   * @returns {crux.Component}
+   * */
+  component.prototype.get = function GetComponentData() {
+    return this;
+  };
+
+  /**
+   * A component can be configured to have other components as dependencies, to be loaded prior to the
+   * current component. This acts as a getter for the component requirements.
+   * @method
+   * @memberof crux.Component
+   * @returns {string[]}
+  * */
+  component.prototype.requirements = function GetRequirements() {
+    return REQUIREMENTS;
+  };
+
+  /**
+   * Each component can define its individual npm package requirements to be installed, before
+   * the actual initialization of the component. This is required to be
+   * overridden by all components that require external dependencies. &lt;br>
+   * The packages are installed BEFORE we call their init() method.&lt;br>
+   * Each individual package name must have the following format:&lt;br>
+   * &lt;b>[name]@[version]&lt;/b> - if version is not specified, we will use &lt;b>latest&lt;/b.
+   * @abstract
+   * @memberof crux.Component
+   * @returns {string[]}
+  * */
+  component.prototype.packages = function GetPackages() {
+    return [];
+  };
+
+
+  /**
+   * Sets/gets the registry object that this component is in.
+   * @method
+   * @memberof crux.Component
+   * @returns crux.Registry
+   * @private
+   * */
+  component.prototype.registry = function SetRegistry(_obj) {
+    if(typeof _obj === 'object' &amp;&amp; _obj !== null) {
+      registryObj = _obj;
+      return this;
+    }
+    return registryObj;
+  };
+
+  /**
+  * Because we want each component to be aware of other components, we need an injection system, capable
+  * of attaching functions from one component inside another component. &lt;br>
+   * Components that allow attaching (or injecting) functionality into other components will have to implement the attach() function.
+   * @abstract
+   * @memberof crux.Component
+   * @param {string} methodName - the method we want to attach to a component
+   * @param {function} methodFn - the function that will be called after attaching.
+  * */
+  component.prototype.attach = function AttachComponentFunction(methodName, methodFunction) {
+    // REQUIRES IMPLEMENTATION.
+  };
+
+
+  /*
+  * Sets/Gets default component data.
+  * */
+  component.default = function SetDefaultValues(_data) {
+    if(typeof _data === 'undefined') return DEFAULTS;
+    DEFAULTS = _data;
+    return this;
+  };
+
+  /*
+  * Sets/Gets a given sub-dependent library that the component uses.
+  * */
+  component.lib = function SetLibrary(name, _object, _isDefault) {
+    if(typeof name !== 'string') return null;
+    if(typeof _object === 'undefined') return LIBRARIES[name] || null;
+    if(_isDefault === true &amp;&amp; typeof LIBRARIES[name] !== 'undefined') return this; // we only place the default one.
+    LIBRARIES[name] = _object;
+    return this;
+  };
+
+  /*
+  * This will return the given path relative to the app's rootdir
+  * */
+  component.appPath = function GetAppPath(path1, path2) {
+    var base = global['__rootdir'];
+    if(typeof path1 !== 'string') {
+      throw new Error('CruxComponent.appPath() argument1 is not a string.');
+    }
+    if(path1.indexOf('__DIRNAME') === 0) {
+      base = path1.replace('__DIRNAME','');
+      return path.normalize(base);
+    }
+    var full = path.join(base, path1);
+    if(typeof path2 === 'string') {
+      full = path.join(full, path2);
+    }
+    return full;
+  };
+
+  /*
+   * Registeres a component requirement that has to be run before this.
+   * */
+  component.require = function RequireComponent(name) {
+    if(typeof name === 'undefined') return REQUIREMENTS;
+    var names = (name instanceof Array ? name : name.split(' '));
+    for(var i=0; i &lt; names.length; i++) {
+      if(REQUIREMENTS.indexOf(names[i].toLowerCase()) === -1) {
+        REQUIREMENTS.push(names[i].toLowerCase());
+      }
+    }
+    return this;
+  };
+
+  /*
+  * This is a wrapper function over util.inherits's function. We may or may not add
+  * additional code here.
+  * */
+  component.inherits = function ComponentInheritance(targetPrototype) {
+    util.inherits(targetPrototype, component);
+    return this;
+  };
+
+  return component;
+};
+
+module.exports = ComponentClass;</pre>
+	</article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a>
+	on Thu Feb 26th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

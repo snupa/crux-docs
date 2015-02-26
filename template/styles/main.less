@@ -1,0 +1,232 @@
+@import "../bower_components/bootstrap/less/bootstrap";
+@import "variables";
+@import "bootswatch";
+
+@headerHeight: 48px;
+
+#main {
+  margin-top : @headerHeight*2;
+  margin-left: 280px;
+  > .page-title:first-child {
+    display: none;
+  }
+  article {
+    dl > dt {
+      font-size: 120%;
+    }
+  }
+}
+
+body > .container > .row:first-child > .col-md-8:first-child {
+  width: 100%;
+}
+
+.navbar-fixed-top {
+  .navbar-header {
+    &.go-back {
+      margin-left: -35px;
+      margin-right: 35px;
+      padding-top: 15px;
+      .nav-back {
+        > a, a:visited {
+          color : #e8e8e8;
+          text-decoration: none !important;
+        }
+        > a:hover, a:active {
+          color: #ffffff;
+        }
+      }
+    }
+    .crux-logo {
+      display: block;
+      padding: 15px;
+      .nav-logo {
+        width: 50px;
+      }
+    }
+  }
+
+  > .container > .navbar-collapse > .navbar-nav li a,
+  a.navbar-brand {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 3px 3px rgba(0, 0, 0, 0.28);
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 3px 3px rgba(0, 0, 0, 0.28);
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 3px 3px rgba(0, 0, 0, 0.28);
+  -o-box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 3px 3px rgba(0, 0, 0, 0.28);
+  border-bottom: 0 !important;
+  .navbar-nav .dropdown-toggle {
+    font-size: 115%;
+  }
+  .navbar-inner {
+	padding-left  : 20px;
+	padding-right : 20px;
+  }
+
+}
+
+.navbar {
+  .dropdown-menu {
+    border-top: 0;
+	max-height       : 300px;
+	overflow         : auto;
+	width            : 300px;
+	background-color : @navbar-inverse-bg;
+	a, a:visited {
+	  color : @navbar-inverse-link-color;
+	}
+	a:hover {
+	  color            : @navbar-inverse-link-hover-color;
+	  background-color : @navbar-inverse-link-hover-bg;
+	}
+	a:active {
+	  color            : @navbar-inverse-link-active-color;
+	  background-color : @navbar-inverse-link-active-bg;
+	}
+	a {
+      padding          : 10px;
+	  font-weight   : 500;
+	  font-size     : 105%;
+	}
+  }
+
+}
+
+#toc {
+  height: calc(~"100% - "@headerHeight);
+  position   : fixed;
+  top        : @headerHeight;
+  left      : 0;
+  overflow   : auto;
+  width: 335px;
+  padding    : 0;
+  background-color : #f4f4f4;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.14), 0 3px 3px rgba(0, 0, 0, 0.28);
+  -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.14), 0 3px 3px rgba(0, 0, 0, 0.28);
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.14), 0 3px 3px rgba(0, 0, 0, 0.28);
+  -o-box-shadow: 0 0 2px rgba(0, 0, 0, 0.14), 0 3px 3px rgba(0, 0, 0, 0.28);
+
+  // For some reason, the toc-h1 gets duplicated.
+  ul > li.toc-h1:first-child {
+    display: none;
+  }
+
+  .toc-active {
+    > a {
+      color            : #ffffff;
+    }
+	a, a:hover, a:active, a:visited {
+	  background-color : #eeeeee;
+	  color            : #356b35;
+	}
+  }
+  a:hover, a:active, a:visited {
+    background-color: #EBEBEB;
+  }
+
+  .toc-h1 > a{
+    padding-left  : 12px;
+  }
+
+  .toc-h2 > a{
+    padding-left  : 20px;
+  }
+
+  .toc-h3 > a{
+    padding-left  : 28px;
+  }
+
+  .toc-h4 > a{
+    padding-left  : 36px;
+  }
+}
+
+
+
+.copyright {
+  font-size  : 90%;
+  text-align : center;
+  color      : @navbar-inverse-bg;
+  width      : 100%;
+  display    : block;
+}
+
+.jsdoc-message {
+  font-size  : 90%;
+  text-align : center;
+  color      : @navbar-inverse-bg;
+  width      : 100%;
+  display    : block;
+}
+
+.page-title {
+  font-size      : 220%;
+  color          : @navbar-inverse-bg;
+  font-weight    : 700;
+  padding-top    : 10px;
+  padding-bottom : 7px;
+  display        : block;
+}
+
+footer {
+  border-top  : 1px solid  @navbar-inverse-link-hover-bg;
+  padding-top : 15px;
+}
+
+code {
+  background-color : transparent;
+  border           : none;
+  color            : orange;
+}
+
+.buffered-name {
+  padding-top : @headerHeight;
+  margin-top  : -@headerHeight;
+}
+
+.member-collapsed {
+  background-color : @navbar-inverse-bg;
+  color            : @navbar-inverse-color;
+}
+
+.member-open {
+  background-color : inherit;
+  color            : inherit;
+}
+
+.member {
+  .transition(background-color 0.5s linear);
+  .transition(color 0.5s linear);
+  padding : 3px;
+  margin-top:5px;
+  margin-bottom:5px;
+
+
+}
+.member-name{
+  padding-top: 100px !important;
+  margin-top: -100px !important;
+}
+
+
+.sunlight-highlighted {
+  margin           : 0;
+  line-height      : auto;
+  word-break       : normal;
+  word-wrap        : normal;
+  white-space      : pre;
+  background-color : transparent;
+  border           : none;
+}
+
+.sunlight-line-number-margin {
+  .border-top-radius(0);
+  .border-right-radius(0);
+  .border-bottom-radius(0);
+  .border-left-radius(0);
+  border-width  : 0 1px 0 0;
+  font-size     : 12px;
+  line-height   : 15px;
+  padding       : 12px 4px !important;
+}

@@ -1,0 +1,7 @@
+{
+    "static": {
+        "open": true,
+        "host": "localhost",
+        "port": 3200
+    }
+}

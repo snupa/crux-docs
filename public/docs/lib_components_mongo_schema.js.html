@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Crux Source: lib/components/mongo/schema.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.dark.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.simplex.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header go-back">
+		<span class="nav-back">
+			<a href="http://crux.pearlhq.com/">Official site</a>
+		</span>
+	</div>
+	<div class="navbar-header">
+		<a href="index.html" class="crux-logo">
+			<img class="nav-logo" alt="&nbsp;" src="/assets/img/crux-green.png" data-reactid=".0.0.0.0.0.0" />
+		</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.html">crux</a></li><li><a href="crux.Build.html">crux.Build</a></li><li><a href="crux.Build.Angular.html">crux.Build.Angular</a></li><li><a href="crux.Database.html">crux.Database</a></li><li><a href="crux.Server.html">crux.Server</a></li><li><a href="crux.Store.html">crux.Store</a></li><li><a href="crux.util.html">crux.util</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.Application.html">crux.Application</a></li><li><a href="crux.Build.Angular.Core.html">crux.Build.Angular.Core</a></li><li><a href="crux.Build.Angular.Index.html">crux.Build.Angular.Index</a></li><li><a href="crux.Build.Angular.Templates.html">crux.Build.Angular.Templates</a></li><li><a href="crux.Build.Build.html">crux.Build.Build</a></li><li><a href="crux.Build.Commonjs.html">crux.Build.Commonjs</a></li><li><a href="crux.Build.Interface.html">crux.Build.Interface</a></li><li><a href="crux.Build.Less.html">crux.Build.Less</a></li><li><a href="crux.Build.Sass.html">crux.Build.Sass</a></li><li><a href="crux.Build.Templates.html">crux.Build.Templates</a></li><li><a href="crux.Component.html">crux.Component</a></li><li><a href="crux.Database.Mongo.html">crux.Database.Mongo</a></li><li><a href="crux.Database.Mongo.Schema.html">crux.Database.Mongo.Schema</a></li><li><a href="crux.Database.Sql.html">crux.Database.Sql</a></li><li><a href="crux.Database.Sql.Model.html">crux.Database.Sql.Model</a></li><li><a href="crux.Registry.html">crux.Registry</a></li><li><a href="crux.Server.Chain.html">crux.Server.Chain</a></li><li><a href="crux.Server.Request.html">crux.Server.Request</a></li><li><a href="crux.Server.Route.html">crux.Server.Route</a></li><li><a href="crux.Server.Server.html">crux.Server.Server</a></li><li><a href="crux.Server.Utils.html">crux.Server.Utils</a></li><li><a href="crux.Server.Validations.html">crux.Server.Validations</a></li><li><a href="crux.Store.Redis.html">crux.Store.Redis</a></li><li><a href="crux.util.install.html">crux.util.install</a></li><li><a href="crux.util.Parser.html">crux.util.Parser</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="interfaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Interfaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.Service.html">crux.Service</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#_">_</a></li><li><a href="global.html#__rootdir">__rootdir</a></li><li><a href="global.html#log">log</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+    		<h1 class="page-title">Source: lib/components/mongo/schema.js</h1>
+			
+
+		<h1 class="page-title">Source: lib/components/mongo/schema.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript ">var crux = require('../../../index');
+
+function init(mongoose) {
+  /**
+   * @classdesc This is a schema file that is used by mongo schemas to register themselves to mongo.
+   * @memberof crux.Database.Mongo
+   * @class Schema
+   * @param {String} name - the schema definition's name
+   * @param {String} collection - the mongodb collection name
+   * @param {Boolean} [debug] - Enables or disables debug mode for the Mongo component
+   * @example
+   *    // current schema file: schemas/user.js
+   *    module.exports = function(userSchema, Mongo) {
+   *      userSchema.collection('users'); // this will set the mongodb collection name from user to users
+   *      userSchema
+   *        .field('name', Mongo.STRING, {
+   *          defaultValue: 'John'
+   *        })
+   *        .field('is_active', Mongo.BOOLEAN, {
+   *          defaultValue: true
+   *        })
+   *        .field('created_at', Mongo.DATE, {
+   *          defaultValue: Date.now
+   *        });
+   *
+   *        userSchema
+   *          .index('name')
+   *          .belongsTo('application');  // this generates the mongo property application_id of type ObjectId
+   *    };
+   * */
+  var schema = function MongoSchema(name, _collection, _DEBUG) {
+    this.__name = name;
+    this.collection_name = (_.isString(_collection) ? _collection : name);
+    this.fields = {};
+    this.methods = {};
+    this.statics = {};
+    this.indexes = [];
+    this.virtuals = {};
+    this.hasFields = false;
+    this.__hasMany = {};  // schemaTarget:options has many (array of objectId)
+    this.__belongsTo = {}// schemaTarget:options belongs to (objectId reference)
+    this.__debug = _DEBUG;
+  };
+
+  /**
+   * This acts as a setter for the collection's name
+   * @function collection
+   * @instance
+   * @memberof crux.Database.Mongo.Schema
+   * @param {String} name - the MongoDB collection's name
+   * */
+  schema.prototype.collection = function SetCollection(name) {
+    if(typeof name !== 'string' || !name) {
+      throw new Error('Crux.mongo: failed to set collection name to ' + this.collection_name);
+    }
+    this.collection_name = name;
+    return this;
+  };
+
+  /**
+   * This acts as a setter for the schema's name
+   * @function name
+   * @instance
+   * @memberof crux.Database.Mongo.Schema
+   * @param {String} name - the Mongo Schema's name
+   * */
+  schema.prototype.name = function SetName(name) {
+    if(typeof name !== 'string' || !name) {
+      throw new Error('Crux.mongo: failed to set schema name to ' + this.name);
+    }
+    this.__name = name;
+    return this;
+  };
+
+  /**
+   * Registers a schema field. Schema fields are basically Mongo properties, similar to MySQL's columns.
+   * @function field
+   * @instance
+   * @memberof crux.Database.Mongo.Schema
+   * @param {String} name - the field's name
+   * @param {Mongoose.Schema.Types} type - the field's type from Mongoose's type definition.
+   * @param {Object} options - additional options to be passed to Mongo's schema model.
+   * @see {@link http://mongoosejs.com/docs/schematypes.html}
+   * @see {@link http://mongoosejs.com/docs/guide.html#options}
+   * */
+  schema.prototype.field = function SetField(name, type, _opt) {
+    if(!_.isString(name)) {
+      throw new Error('Field name ' + name + ' is invalid.');
+    }
+    var opt = (typeof _opt === 'object' &amp;&amp; _opt !== null ? _opt : {});
+    if(typeof this.fields[name] !== 'undefined') {
+      throw new Error('Field ' + name + ' already exists.');
+    }
+    this.fields[name] = {
+      type: (_.isFunction(type) ? type() : type),
+      defaultValue: null
+    };
+    if(typeof opt.defaultValue !== 'undefined') {
+      this.fields[name].defaultValue = opt.defaultValue;
+      opt.defaultValue = undefined;
+    }
+    this.hasFields = true;
+    this.fields[name].options = opt;
+    return this;
+  };
+
+  /**
+   * Creates a relationship of type (1-to-n) between the current schema and the given schema. The method actually creates
+   * a field of type Mongoose.Types.ObjectId.
+   * @function hasMany
+   * @instance
+   * @memberof crux.Database.Mongo.Schema
+   * @param {String} schemaName - the target schema that we want to apply the relationship
+   * @param {Object} options - additional relationship options.
+   * @see {@link http://mongoosejs.com/docs/api.html#schema-objectid-js}
+   * */
+  schema.prototype.hasMany = function HasMany(schemaName, _opt) {
+    var opt = (_.isObject(_opt) ? _opt : {});
+    var targetName;
+    if(_.isString(opt['as'])) {
+      targetName = opt['as'];
+      opt['as'] = undefined;
+    } else {
+      targetName = schemaName;
+      var lastChar = targetName.charAt(targetName.length-1);
+      if(lastChar !== 's') {
+        if(lastChar in ['a','e','i','o','u','h']) {
+          targetName += 's'
+        }
+        if(lastChar === 'y') {
+          targetName += 's';
+        }
+        if(lastChar === 'h') {
+          targetName += 'es';
+        }
+      }
+    }
+    opt['type'] = mongoose.Schema.Types.ObjectId;
+    opt['ref'] = schemaName;
+    this.__hasMany[targetName] = opt;
+    return this;
+  };
+
+  /**
+   * Creates a relationship of type (n-to-1) between the current schema and the given schema. The method actually creates
+   * a field of type Mongoose.Types.ObjectId.
+   * @function belongsTo
+   * @instance
+   * @memberof crux.Database.Mongo.Schema
+   * @param {String} schemaName - the target schema that we want to apply the relationship
+   * @param {Object} options - additional relationship options.
+   * @see {@link http://mongoosejs.com/docs/api.html#schema-objectid-js}
+   * */
+  schema.prototype.belongsTo = function BelongsTo(schemaName, _opt) {
+    var opt = (_.isObject(_opt) ? _opt : {});
+    opt['type'] = mongoose.Schema.Types.ObjectId;
+    opt['ref'] = schemaName;
+    this.__belongsTo[schemaName] = opt;
+    return this;
+  };
+
+  /**
+   * Attaches the given method to every instance of this schema. This is a wrapper over Mongoose.Schema.method
+   *
+   * @function method
+   * @instance
+   * @memberof crux.Database.Mongo.Schema
+   * @param {String} name - the method's name
+   * @param {Function} fn - the method's callback function
+   * @see {@link http://mongoosejs.com/docs/api.html#schema_Schema-method}
+   * */
+  schema.prototype.method = function RegisterMethod(name, callback) {
+    this.methods[name] = callback;
+    return this;
+  };
+
+  /**
+   * Attaches the given function to the Schema definition object. The function will thus be available under the schema definition
+   * but not under every schema instance.
+   * @function static
+   * @instance
+   * @memberof crux.Database.Mongo.Schema
+   * @param {String} name - the static method's name
+   * @param {Function} fn - the static method's callback function
+   * @see {@link http://mongoosejs.com/docs/api.html#schema_Schema-static}
+   * */
+  schema.prototype.static = function RegisterStatic(name, callback) {
+    this.statics[name] = callback;
+    return this;
+  };
+
+  /*
+   * Registers a virtual data field.
+   * */
+  schema.prototype.data = function VirtualDataField(name, obj) {
+    // TODO
+    return this;
+  };
+
+  /*
+   * ToJSON override method.
+   * */
+  schema.prototype.json = function ToJsonOverride(cb) {
+    // TODO
+    return this;
+  };
+
+  /**
+   * Marks the given fields as indexes. This is a wrapper over Mongoose.Schema's index options
+   * @function index
+   * @memberof crux.Database.Mongo.Schema
+   * @instance
+   * @param {String[]} indexes - an array of indexes
+   * @see {@link http://mongoosejs.com/docs/api.html#schematype_SchemaType-index}
+   * */
+  schema.prototype.index = function SetIndexes(a) {
+    var arr = (a instanceof Array ? a : Array.prototype.slice.call(arguments));
+    _.forEach(arr, function(idxName) {
+      this.indexes.push(idxName);
+    }.bind(this));
+    return this;
+  };
+
+  /*
+   * Checks if the schema has an index.
+   * */
+  schema.prototype.isIndex = function IsFieldIndex(name) {
+    return (this.indexes.indexOf(name) !== -1);
+  };
+
+  /*
+   * This is where we call mongoose.model().
+   * */
+  schema.prototype.toMongoose = function ToMongoose(mongoose) {
+    var data = this.getSchema(),
+      _schema = this;
+    var schemaObj = mongoose.Schema(data);
+
+    _.forEach(this.methods, function(cb, name) {
+      schemaObj.methods[name] = cb;
+    });
+    _.forEach(this.statics, function(cb, name) {
+      schemaObj.statics[name] = cb;
+    });
+    schemaObj.statics['build'] = function CreateInstance(data) {
+      var bObj = new modelObj(data);
+      _schema.promisify(bObj, modelObj)
+      _schema.wrapJson(bObj);
+      return bObj;
+    };
+
+    var modelObj = mongoose.model(this.__name, schemaObj, this.collection_name);
+    // Promisify over the find() method
+    var self = this,
+      _find = modelObj.find,
+      _findOne = modelObj.findOne;
+    modelObj.find = function FindWithPromise(query) {
+      return crux.promise(function(resolve, reject) {
+        if(typeof query !== 'object' || query === null) {
+          return reject(new Error('Invalid mongodb query for ' + self.__name));
+        }
+        var queryArgs = [],
+          queryCb = null;
+        /* We have a find() */
+        if(typeof query['where'] === 'object' &amp;&amp; query['where'] !== null) {
+          queryArgs.push(query.where);
+          queryCb = _find;
+        } else {
+          queryCb = _findOne;
+          queryArgs.push(query);
+        }
+        if(query['attributes'] instanceof Array) {
+          queryArgs.push(query.attributes.join(' '));
+        }
+        queryArgs.push(function onResults(err, result) {
+          if(err) {
+            if(err.name === 'CastError') {
+              return resolve(null);
+            }
+            return reject(err);
+          }
+          if(result !== null) {
+            if(result instanceof Array) {
+              for(var q=0; q &lt; result.length; q++) {
+                _schema.wrapJson(result[q]);
+              }
+            } else {
+              _schema.wrapJson(result);
+            }
+          }
+          return resolve(result);
+        });
+        if(_schema.__debug) {
+          if(queryCb == _find) {
+            log.trace('Mongo select `%s` where: %s', _schema.__name, JSON.stringify(query.where));
+          } else {
+            log.trace('Mongo find `%s` by: %s', _schema.__name, JSON.stringify(query));
+          }
+        }
+        return queryCb.apply(this, queryArgs);
+      }.bind(this));
+    };
+
+    /* Promisified wrapper over the schema.update */
+    var _update = modelObj.update;
+    modelObj.update = function UpdateSchema(where, attributes, _options) {
+      var options = (typeof _options === 'object' &amp;&amp; _options !== null ? _options : {});
+      return crux.promise(function(resolve, reject) {
+        _update.call(this, where, attributes, options, function(err, updateCount) {
+          if(err) return reject(err);
+          resolve(updateCount);
+        });
+      }.bind(this));
+    };
+
+    /* Promisified exec() */
+    var _exec = modelObj.exec;
+    modelObj.exec = function Exec() {
+      return crux.promise(function(resolve, reject) {
+        _exec.call(this, function(err, results) {
+          if(err) return reject(err);
+          resolve(results);
+        });
+      }.bind(this));
+    };
+
+    return modelObj;
+  };
+
+  /**
+  *  Promisifies the given schema object, wrapping the calls with crux.promise
+   *
+   *  @memberof crux.Database.Mongo.Schema
+   *  @function promisify
+   *  @instance
+   *  @private
+  * */
+  schema.prototype.promisify = function PromisifyObject(bObj, modelObj) {
+    var _save = bObj.save,
+      _schema = this;
+    bObj.save = function SaveInstance() {
+      return crux.promise(function(resolve, reject) {
+        if(_schema.__debug) {
+          log.trace('Mongo save %s with: ', _schema.__name, JSON.stringify(this.toJSON()));
+        }
+        _save.call(this, function(err, res) {
+          if(err) {
+            return reject(err);
+          }
+          resolve(res);
+        });
+      }.bind(this));
+    };
+    // We add the update() field.
+    bObj.update = function UpdateWithPromise(_attributes) {
+      return crux.promise(function(resolve, reject) {
+        modelObj.update({_id: this.get('id')}, {
+          $set: _attributes
+        }, function(err, _count) {
+          if(err) return reject(err);
+          if(_count === 0) {
+            var err = new Error('The requested ' + _schema.name + ' id '+ this.get('id') +' was not found.');
+            err.code = 'NOT_FOUND';
+            return reject(err);
+          }
+          for(var key in _attributes) {
+            this.set(key, _attributes[key]);
+          }
+          resolve();
+        }.bind(this));
+      }.bind(this));
+    };
+  };
+
+  /**
+   * Wraps the toJSON method over the given object. We do this so that &lt;b>_id&lt;/b> is automatically converted to &lt;b>id&lt;/b> and &lt;b>_v&lt;/b> is removed.
+   *
+   * @function wrapJson
+   * @memberof crux.Database.Mongo.Schema
+   * @instance
+   * @private
+   * @param {Object} obj - the schema object to be json-ified
+   * */
+  schema.prototype.wrapJson = function WrapJSON(obj) {
+    var _json = obj.toJSON;
+    obj.toJSON = function ToJsonWrapper() {
+      var data = _json.call(this);
+      if(typeof data['_id'] !== 'undefined') {
+        data['id'] = data['_id'].toString();
+        data['_id'] = undefined;
+      }
+      if(typeof data['__v'] !== 'undefined') {
+        data['__v'] = undefined;
+      }
+      return data;
+    };
+  };
+
+
+  /*
+   * Returns the mongoose-parsed schema.
+   * */
+  schema.prototype.getSchema = function GetSchema() {
+    var d = {};
+    _.forEach(this.fields, function(data, name) {
+      var mongoOpt = {
+        type: data.type,
+        default: data.defaultValue
+      };
+      if(typeof data.type === 'object' &amp;&amp; data.type !== null) {
+        mongoOpt = data.type;
+      }
+      if(this.isIndex(name)) {
+        mongoOpt['index'] = true;
+      }
+      d[name] = mongoOpt;
+    }.bind(this));
+    /* We set our HasMany relationships */
+    _.forEach(this.__hasMany, function(data, name) {
+      d[name] = [data];
+    });
+    /* We set our BelongsTo relationship */
+    _.forEach(this.__belongsTo, function(data, name) {
+      d[name] = data;
+    });
+    return d;
+  };
+
+  return schema;
+}
+
+module.exports = init;</pre>
+	</article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a>
+	on Thu Feb 26th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

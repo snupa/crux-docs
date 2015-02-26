@@ -1,0 +1,11 @@
+# OS generated files #
+######################
+Thumbs.db
+*.swp
+.idea
+*.log
+*.pid
+*.gz
+node_modules
+template/bower_components
+template/node_modules

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Crux Source: lib/components/server/lib/request.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.dark.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.simplex.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header go-back">
+		<span class="nav-back">
+			<a href="http://crux.pearlhq.com/">Official site</a>
+		</span>
+	</div>
+	<div class="navbar-header">
+		<a href="index.html" class="crux-logo">
+			<img class="nav-logo" alt="&nbsp;" src="/assets/img/crux-green.png" data-reactid=".0.0.0.0.0.0" />
+		</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.html">crux</a></li><li><a href="crux.Build.html">crux.Build</a></li><li><a href="crux.Build.Angular.html">crux.Build.Angular</a></li><li><a href="crux.Database.html">crux.Database</a></li><li><a href="crux.Server.html">crux.Server</a></li><li><a href="crux.Store.html">crux.Store</a></li><li><a href="crux.util.html">crux.util</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.Application.html">crux.Application</a></li><li><a href="crux.Build.Angular.Core.html">crux.Build.Angular.Core</a></li><li><a href="crux.Build.Angular.Index.html">crux.Build.Angular.Index</a></li><li><a href="crux.Build.Angular.Templates.html">crux.Build.Angular.Templates</a></li><li><a href="crux.Build.Build.html">crux.Build.Build</a></li><li><a href="crux.Build.Commonjs.html">crux.Build.Commonjs</a></li><li><a href="crux.Build.Interface.html">crux.Build.Interface</a></li><li><a href="crux.Build.Less.html">crux.Build.Less</a></li><li><a href="crux.Build.Sass.html">crux.Build.Sass</a></li><li><a href="crux.Build.Templates.html">crux.Build.Templates</a></li><li><a href="crux.Component.html">crux.Component</a></li><li><a href="crux.Database.Mongo.html">crux.Database.Mongo</a></li><li><a href="crux.Database.Mongo.Schema.html">crux.Database.Mongo.Schema</a></li><li><a href="crux.Database.Sql.html">crux.Database.Sql</a></li><li><a href="crux.Database.Sql.Model.html">crux.Database.Sql.Model</a></li><li><a href="crux.Registry.html">crux.Registry</a></li><li><a href="crux.Server.Chain.html">crux.Server.Chain</a></li><li><a href="crux.Server.Request.html">crux.Server.Request</a></li><li><a href="crux.Server.Route.html">crux.Server.Route</a></li><li><a href="crux.Server.Server.html">crux.Server.Server</a></li><li><a href="crux.Server.Utils.html">crux.Server.Utils</a></li><li><a href="crux.Server.Validations.html">crux.Server.Validations</a></li><li><a href="crux.Store.Redis.html">crux.Store.Redis</a></li><li><a href="crux.util.install.html">crux.util.install</a></li><li><a href="crux.util.Parser.html">crux.util.Parser</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="interfaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Interfaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.Service.html">crux.Service</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#_">_</a></li><li><a href="global.html#__rootdir">__rootdir</a></li><li><a href="global.html#log">log</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+    		<h1 class="page-title">Source: lib/components/server/lib/request.js</h1>
+			
+
+		<h1 class="page-title">Source: lib/components/server/lib/request.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript ">var uuid = require('node-uuid');
+
+/**
+* When an HTTP connection is initiated, it is captured by express's router, after which it will be passed to the appropiate
+ * Crux route. The route's internal functionality will check the prerequisites of the data incoming.&lt;br>
+ * If the data is as expected, the route endpoint's then() function is called. At this point, crux Server will create
+ * an instance of crux.Server.Request, that will contain the information about the current request.&lt;br>
+ * Functionality present in crux.Server.Request will be available in all the route's endpoint definitions. See example.
+ *
+ * @class crux.Server.Request
+ * @memberof crux.Server
+ * @example
+ *  // We have our regular route definition account.js
+ *  module.exports = function(route) {
+ *    route
+ *      .get('/', 'Get account')
+ *      // Once the route decides that the request is valid, it creates the request object and binds it to the endpoint's "then" function.
+ *      .then(function() {
+ *        console.log("Context?", this);  // => will output that it is an instance of crux.Server.Request
+ *        console.log(this.req);  // => the express request object of crux's endpoint request
+ *        console.log(this.res);  // => the express response object.
+ *        console.log(this.session);  // => the express request's session
+ *      })
+ *      .then(function() {
+ *      });
+ *  };
+ *
+ * @example
+ *  // Secondary example that will explain how to extend the request's functionality
+ *  var request = crux.Server.Request;
+ *  request.prototype.sayHello = function SayHello() {
+ *    return this.success("Hello world from extended request!");
+ *  }
+ *  // Once we do this and require the file (either via config.extends or manually), this functionality is added to every request.
+ *  // WARNING: before actually extending the request, it is required to initialize the crux server component first.
+* */
+var SERVER = null;
+
+var Request = function CruxServerRequest(req, res, path, serverInstance) {
+  SERVER = serverInstance;
+  /**
+   * The Express's request object, associated to this HTTP request.
+   * @memberof crux.Server.Request
+   * @type {express.Request}
+   * @name crux.Server.Request.req
+   * */
+  this.req = req;
+  /**
+   * The Express's response object, associated to this HTTP request.
+   * @memberof crux.Server.Request
+   * @type {express.Response}
+   * @name crux.Server.Request.res
+   * */
+  this.res = res;
+  /**
+   * The full HTTP path of the request.
+   * @memberof crux.Server.Request
+   * @type {String}
+   * @name crux.Server.Request.path
+   * */
+  this.path = path; // this is the full HTTP path
+  /**
+   * The Express's session object, associated to this HTTP request.
+   * @memberof crux.Server.Request
+   * @type {express.Session}
+   * @name crux.Server.Request.session
+   * */
+  this.session = req.session;
+  /**
+  * The route endpoint's generated name
+   * @memberof crux.Server.Request
+   * @tpye {String}
+   * @name crux.Server.Request.name
+  * */
+  this.name = null; // set in the route object
+  this.description = null;//set in the route object
+  /**
+   * The route endpoint's namespace
+   * @memberof crux.Server.Request
+   * @tpye {String}
+   * @name crux.Server.Request.namespace
+   * */
+  this.namespace = null;//set in the route obj.
+};
+
+/**
+* Utility function that uses node-uuid to generate an unique identifier
+ * @memberof crux.Server.Request
+ * @instance
+ * @function uuid
+ * @returns {String}
+* */
+Request.prototype.uuid = function GenerateUUID() {
+  return uuid.v4();
+};
+
+/**
+* Verifies if the HTTP request is ajax or not. By default, if its content-type header is application/json, it is set to true&lt;br/>
+ * Otherwise, it checks for express's &lt;b>xhr&lt;/b> property of the request.
+ * @memberof crux.Server.Request
+ * @function isAjax
+ * @instance
+ * @returns {Boolean}
+* */
+Request.prototype.isAjax = function IsAjaxRequest() {
+  try {
+    if(this.req.headers['content-type'].indexOf('application/json') !== -1) {
+      return true;
+    }
+  } catch(e) {}
+  if(typeof this._isAjax === 'boolean') return this._isAjax;
+  if(this.req.isAjax) return this.req.isAjax;
+  if(this.req.method === 'POST' || this.req.method === 'PUT') return true;
+  return this.req.xhr;
+};
+
+/**
+ * This will render the given template and return it to the client, closing the HTTP connection.
+ * The view path is relative to the crux server's view path.
+ * @memberof crux.Server.Request
+ * @function render
+ * @instance
+ * @param {String} name - the view file's name, relative to the views folder
+ * @param {Object} [options] - additional data that will be available at the view level
+* */
+Request.prototype.render = function RenderTemplate(name, options) {
+  var _opt = {
+    session: this.session,
+    namespace: this.namespace,
+    route: this.name
+  };
+  if(typeof options === 'object' &amp;&amp; options !== null) {
+    for(var k in options) {
+      _opt[k] = options[k];
+    }
+  }
+  var viewExt = SERVER.config.views.extension;
+  if(viewExt.charAt(0) !== '.') viewExt = '.' + viewExt;
+  if(name.indexOf(viewExt) === -1 &amp;&amp; name.indexOf('.html') === -1) name += viewExt;
+  this.__clearClose();
+  this.res.render(name, _opt);
+};
+
+/**
+ * Utility function that returns the given url parameter from the request, or a default value
+ * @memberof crux.Server.Request
+ * @function param
+ * @instance
+ * @param {String} name - the parameter's name
+ * @param {Any} [default=null[ - the default value to be returned, if it is not present.
+ * */
+Request.prototype.param = function GetParam(name, _default) {
+  if(typeof name !== 'string') return this.req.params;
+  if(typeof this.req.params[name] === 'undefined') return (typeof _default === 'undefined' ? null : _default);
+  return this.req.params[name];
+};
+
+/**
+ * Utility function that returns the given query parameter from the request, or a default value
+ * @memberof crux.Server.Request
+ * @function query
+ * @instance
+ * @param {String} name - the query key's name
+ * @param {Any} [default=null[ - the default value to be returned, if it is not present.
+ * */
+Request.prototype.query = function GetQuery(name, _default) {
+  if(typeof name !== 'string') return this.req.query;
+  if(typeof this.req.query[name] !== 'undefined') {
+    return this.req.query[name];
+  }
+  return (typeof _default === 'undefined' ? null : _default);
+};
+
+/**
+ * Utility function that returns the given body parameter from the request, or a default value
+ * @memberof crux.Server.Request
+ * @function body
+ * @instance
+ * @param {String} name - the body key's name
+ * @param {Any} [default=null[ - the default value to be returned, if it is not present.
+ * */
+Request.prototype.body = function GetBody(name, _default) {
+  if(typeof name !== 'string') {
+    // We will try and perform a cleaned-up version of the request body parameters. If we find any body params previously set by the route chain, we return only them.
+    if(this.endpoint.parameters.body.length === 0) {
+      return this.req.body;
+    }
+    var _body = {};
+    for(var i= 0, len = this.endpoint.parameters.body.length; i &lt; len; i++) {
+      var pName = this.endpoint.parameters.body[i].name;
+      _body[pName] = this.req.body[pName];
+    }
+    return _body;
+  }
+  if(typeof this.req.body === 'object' &amp;&amp; typeof  this.req.body[name] !== 'undefined') {
+    return this.req.body[name];
+  }
+  return (typeof _default === 'undefined' ? null : _default);
+};
+
+/**
+ * Utility function that returns the given header parameter from the request, or a default value
+ * @memberof crux.Server.Request
+ * @function header
+ * @instance
+ * @param {String} name - the header's name
+ * @param {Any} [default=null[ - the default value to be returned, if it is not present.
+ * */
+Request.prototype.header = function GetHeader(name) {
+  if(typeof name !== 'string') return this.req.headers;
+  if(typeof this.req.headers === 'object' &amp;&amp; typeof this.req.headers[name] !== 'undefined') {
+    return this.req.headers[name];
+  }
+  return null;
+};
+
+/*
+ * Registers an on Close event on the request. So, whenever the request is closed by the client
+ * we fire the cb.
+ * */
+Request.prototype.onClose = function OnClose(cb) {
+  this.__onClose = cb;
+  this.req.once('close', this.__onClose);
+};
+/*
+ * If we had a previous onClose callback, we clear it.
+ * */
+Request.prototype.__clearClose = function ClearCloseEvent() {
+  if(typeof this.__onClose !== 'function') return;
+  this.req.removeListener('close', this.__onClose);
+  this.__onClose = null;
+};
+
+/**
+ * This function is used to signal the client that an error has occurred. It will perform an isAjax check before sending.&lt;br>
+ * If it is an ajax request, it will return a JSON object, otherwise, it will render the appropriate error template (404, 500,etc)
+ *
+ * @memberof crux.Server.Request
+ * @function error
+ * @instance
+ * @param {String|Error} code - the error code (upper-case) or an error object.
+ * @param {String} [message] - the error message, used with code=string
+ * @param {Any} [data] - additional error information to be sent.
+ * @example
+ *  // The error JSON object has the following structure
+ *  this.error("ERROR_CODE", "An error occurred", { additional: "data" });
+ *  // => converts to
+ *  var json = {
+ *    type: 'error',
+ *    code: 'ERROR_CODE',
+ *    message: 'An error occurred',
+ *    data: {
+ *      additional: "data"
+ *    }
+ *  }
+ *
+* */
+Request.prototype.error = function AjaxError(_code, message, data) {
+  var code = 'SERVER_ERROR';
+  if(_.isObject(_code)) {
+    if(_.isString(_code.code)) {
+      code = _code.code;
+    }
+    if(_.isString(_code.message)) {
+      message = _code.message;
+    }
+    if(typeof _code.data !== 'undefined') {
+      data = _code.data;
+    }
+    if(_code instanceof TypeError) {
+      log.debug(_code);
+    }
+  } else {
+    code = _code;
+  }
+  if(_code instanceof Error) {
+    if(typeof _code.code === 'string') {
+      code = _code.code;
+      message = _code.message;
+    } else {
+      code = _code.message;
+    }
+  }
+  var resp = {
+    type: 'error',
+    code: code
+  };
+  if(_.isString(message)) {
+    resp['message'] = message;
+  }
+  if(typeof message === 'object' &amp;&amp; message !== null) {
+    resp['data'] = message;
+  } else if(typeof data === 'object' &amp;&amp; data !== null) {
+    resp['data'] = data;
+  }
+  if(typeof this.requestId === 'string') {
+    resp['request_id'] = this.requestId;
+  }
+  if(this.isAjax()) return this.json(resp);
+  var err = new Error(resp.message || resp.code);
+  err.data = resp.data;
+  err.code = resp.code;
+  err.custom = true;
+  SERVER.serverError(err, this.req, this.res);
+  return;
+};
+
+/**
+* The function will stringify the given object and set the response's content type to application/json.
+* This is an utility function to send unconventional data to the client.&lt;br/>
+ * Note: once this function is called, the HTTP request will be terminated.
+ * @memberof crux.Server.Request
+ * @function json
+ * @instance
+ * @param {Any} data - the  data to be sent.
+* */
+Request.prototype.json = function ReturnJson(data) {
+  this.__clearClose();
+  if(!this.res._headerSent) {
+    this.res.setHeader('Content-Type', 'application/json');
+  }
+  this.res.end(JSON.stringify(data));
+  SERVER.requestEnd(this);
+  return this;
+};
+
+/*
+* Returns an AJAX Success JSON
+* Arguments
+*   @message - the message we want to return, optional. If message is an object, it will be seen as the data.
+*   @data - the data we want to attach on the response. Optional.
+*  NOTE:
+*   if the message is in full caps, we add a code to the response, otherwise it's the message.
+* */
+/**
+ * This function is used to signal the client that an operation or the request has successfully terminated.
+ * Note: if the message argument is in full caps, we add a code to the response, otherwise it is treated as a message.
+ *
+ * @memberof crux.Server.Request
+ * @function success
+ * @instance
+ * @param {String} message - additional response message, or the success code if full upper-case
+ * @param {Any} [data] - additional information to be sent.
+ * @example
+ *  // The success JSON object has the following structure
+ *  var accounts = [{
+ *    id: "1",
+ *    name: "John"
+ *  }];
+ *  this.success("Operation terminated", accounts);
+ *  // => converts to
+ *  var json = {
+ *    type: 'success',
+ *    message: 'An error occurred',
+ *    data: [{
+ *      id: "1",
+ *      name: "John"
+ *    }]
+ *  }
+ *
+ * */
+Request.prototype.success = function AjaxSuccess(message, data) {
+  var resp = {
+    type: 'success'
+  };
+  if(typeof this.requestId === 'string') {
+    resp['request_id'] = this.requestId;
+  }
+  if(_.isString(message)) {
+    if(message.toUpperCase() === message) {
+      resp['code'] = message;
+      if(_.isString(data)) {
+        resp['message'] = data;
+      }
+    } else {
+      resp['message'] = message;
+    }
+  }
+  if(typeof message === 'object' &amp;&amp; message !== null) {
+    resp['data'] = message;
+  } else if((typeof data === 'object' &amp;&amp; data !== null) || (typeof data === 'string' &amp;&amp; data !== '')) {
+    resp['data'] = data;
+  }
+  this.json(resp);
+};
+
+/**
+* Utility wrapper over express's request.redirect
+ *
+ * @memberof crux.Server.Request
+ * @function redirect
+ * @instnace
+ * @param {String} path - the HTTP url or path to redirect the client to.
+* */
+Request.prototype.redirect = function Redirect(path) {
+  this.res.redirect(path);
+  this.__clearClose();
+  SERVER.requestEnd(this);
+  return this;
+};
+
+/*
+* Function will run a previously-defined security checkpoint. Defined in route.js
+* */
+Request.prototype.checkpoint = function CheckSecurity(){};
+
+module.exports = Request;</pre>
+	</article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a>
+	on Thu Feb 26th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

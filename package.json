@@ -1,0 +1,12 @@
+{
+    "name": "appName",
+    "version": "0.0.1",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "node-crux": "latest"
+    },
+    "main": "app.js",
+    "description": "Auto-generate crux application"
+}

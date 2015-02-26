@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Crux Source: lib/components/mongo/index.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.dark.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.simplex.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header go-back">
+		<span class="nav-back">
+			<a href="http://crux.pearlhq.com/">Official site</a>
+		</span>
+	</div>
+	<div class="navbar-header">
+		<a href="index.html" class="crux-logo">
+			<img class="nav-logo" alt="&nbsp;" src="/assets/img/crux-green.png" data-reactid=".0.0.0.0.0.0" />
+		</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.html">crux</a></li><li><a href="crux.Build.html">crux.Build</a></li><li><a href="crux.Build.Angular.html">crux.Build.Angular</a></li><li><a href="crux.Database.html">crux.Database</a></li><li><a href="crux.Server.html">crux.Server</a></li><li><a href="crux.Store.html">crux.Store</a></li><li><a href="crux.util.html">crux.util</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.Application.html">crux.Application</a></li><li><a href="crux.Build.Angular.Core.html">crux.Build.Angular.Core</a></li><li><a href="crux.Build.Angular.Index.html">crux.Build.Angular.Index</a></li><li><a href="crux.Build.Angular.Templates.html">crux.Build.Angular.Templates</a></li><li><a href="crux.Build.Build.html">crux.Build.Build</a></li><li><a href="crux.Build.Commonjs.html">crux.Build.Commonjs</a></li><li><a href="crux.Build.Interface.html">crux.Build.Interface</a></li><li><a href="crux.Build.Less.html">crux.Build.Less</a></li><li><a href="crux.Build.Sass.html">crux.Build.Sass</a></li><li><a href="crux.Build.Templates.html">crux.Build.Templates</a></li><li><a href="crux.Component.html">crux.Component</a></li><li><a href="crux.Database.Mongo.html">crux.Database.Mongo</a></li><li><a href="crux.Database.Mongo.Schema.html">crux.Database.Mongo.Schema</a></li><li><a href="crux.Database.Sql.html">crux.Database.Sql</a></li><li><a href="crux.Database.Sql.Model.html">crux.Database.Sql.Model</a></li><li><a href="crux.Registry.html">crux.Registry</a></li><li><a href="crux.Server.Chain.html">crux.Server.Chain</a></li><li><a href="crux.Server.Request.html">crux.Server.Request</a></li><li><a href="crux.Server.Route.html">crux.Server.Route</a></li><li><a href="crux.Server.Server.html">crux.Server.Server</a></li><li><a href="crux.Server.Utils.html">crux.Server.Utils</a></li><li><a href="crux.Server.Validations.html">crux.Server.Validations</a></li><li><a href="crux.Store.Redis.html">crux.Store.Redis</a></li><li><a href="crux.util.install.html">crux.util.install</a></li><li><a href="crux.util.Parser.html">crux.util.Parser</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="interfaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Interfaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.Service.html">crux.Service</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#_">_</a></li><li><a href="global.html#__rootdir">__rootdir</a></li><li><a href="global.html#log">log</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+    		<h1 class="page-title">Source: lib/components/mongo/index.js</h1>
+			
+
+		<h1 class="page-title">Source: lib/components/mongo/index.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript ">var mongoose,
+  async = require('async'),
+  SchemaFun = require('./schema.js'),
+  fs = require('fs');
+
+var util = require('util');
+/*
+ * This is the MongoDB adapter component.
+ * */
+var Crux = require('../../../index'),
+  Component = Crux.Component;
+
+Component.default({
+  debug: true,
+  host: 'localhost',
+  port: 27017,
+  user: null,
+  password: null,
+  database: 'crux',
+  schemas: 'app/models/mongo'
+});
+
+/**
+ * The MongoDB adapter component wraps over Mongoose to export promisified calls over the Schema models.
+ * @name crux.Database.Mongo
+ * @class
+ * @property {Mongoose.Connection} mongo - The Mongoose connection object
+ * @property {Object} schemas - An object containing all loaded schemas
+ * @extends crux.Component
+ *
+ * @param {Object} options Default configurations for the Mongo component
+ * @param {Boolean} [options.debug=true] Specified if Mongo is running in debug mode.
+ * @param {String} [options.host=localhost] MongoDB hostname
+ * @param {Number} [options.port=27017] MongoDB port
+ * @param {String} [options.user=null] MongoDB username
+ * @param {String} [options.password=null] MongoDB password
+ * @param {String} [options.database=crux] MongoDB database.
+ * @param {String} [options.schemas=app/models/mongo] Default path for schema definitions
+ * */
+var Mongo = function CruxMongoComponent() {
+  Mongo.super_.apply(this, arguments);
+  this.name = 'mongo';
+  this.mongo = null;
+  this.schemas = {};
+};
+
+Component
+  .inherits(Mongo)
+  .require('log');
+/**
+* The mongo component requires configuration to be passed to it, as it must read the mongodb host and credentials.
+* @memberof crux.Database.Mongo
+* @defaultValue true
+* */
+Mongo.prototype.__configuration = true;
+
+/**
+* Initializes the mongo component, by loading all the Schema models defined under config.schemas. &lt;br>At this point, it will
+* attach itself to the core components &lt;b>server&lt;/b> and &lt;b>service&lt;/b>
+* @memberof crux.Database.Mongo
+* @function init
+* @instance
+* */
+Mongo.prototype.init = function Initialize() {
+  mongoose = require('mongoose');
+  this.Schema = SchemaFun(mongoose);
+  loadModels.call(this);
+  this.attach();
+};
+
+/**
+ * This component has a single package dependencies, &lt;b>Mongoose&lt;/b> version 3.8. This version can be overridden by overwriting this method.
+ * @memberof crux.Database.Mongo
+ * @function packages
+ * @returns {String[]}
+ * @instance
+* */
+Mongo.prototype.packages = function PackageDependency() {
+  var dep = ["mongoose@3.8.23"];
+  return dep;
+};
+
+/**
+ * The function wil load all the schema definition models from the configured path. It will then perform auto-naming for each
+ * schema and register each model individually.&lt;br>
+ * For each schema file, it will create a Schema object and use it when initiating the schema model.
+ * @function
+ * @private
+ * @memberof crux.Database.Mongo
+ * */
+function loadModels() {
+  var MODEL_LOCATION = Component.appPath(this.config.schemas),
+    self = this;
+  try {
+    var list = Crux.util.readDirectory(MODEL_LOCATION, 'js');
+  } catch(e) {
+    // no schema definitions
+    log.warn('Crux.mongo: no schema definitions found in %s', this.config.schemas);
+    return;
+  }
+
+  list.forEach(function(modelPath) {
+    var colName = modelPath.replace(MODEL_LOCATION, '').replace('.js', '');
+    colName = colName.substr(1);
+    colName = colName.replace(/\//g, '_').replace(/\\/g, '_');
+    var schemaName = Crux.util.capitalize(colName, true);
+    var modelFunc = require(modelPath);
+    if(typeof modelFunc !== 'function') {
+      log.warn('Crux.mongo: failed to load schema %s, not a function', schemaName);
+      return;
+    }
+    var modelObj = self.Register(schemaName, colName);
+    modelFunc(modelObj, self.getTypes());
+    if(!modelObj.hasFields) {
+      log.warn('Crux.mongo: schema definition "%s" has no fields. Skipping', colName);
+      return;
+    }
+    if(typeof self.schemas[modelObj.__name] !== 'undefined') {
+      throw new Error('Crux.mongo: Schema ' + modelObj.__name + ' previously defined.');
+    }
+    var schemaObj = modelObj.toMongoose(mongoose);
+    self.schemas[modelObj.__name] = schemaObj;
+  });
+};
+
+
+/**
+* The mongo component will attach the "schema" method to the following crux components:&lt;br>
+ * &lt;b>server&lt;/b> and &lt;b>service&lt;/b>&lt;br>
+ * As a result, we will be able to perform &lt;b>this.schema(schemaName)&lt;/b> in any service file or in any route definition.
+ * @function attach
+ * @memberof crux.Database.Mongo
+ * @instance
+ * @override
+* */
+Mongo.prototype.attach = function AttachDatabase() {
+  var self = this;
+  function getSchema(name) {
+    return self.getSchema(name);
+  }
+  this.registry().attachTo('server service', 'schema', getSchema);
+};
+
+/**
+ * Initializes the Mongodb connection and calls back once it has been established.
+ * @function run
+ * @memberof crux.Database.Mongo
+ * @instance
+ * @override
+ * */
+Mongo.prototype.run = function InitializeMongo(done) {
+  var connString = this.__connectionString(),
+    self = this,
+    isCalled = false,
+    isConnected = false;
+  function onConnect(err, res) {
+    if(isCalled) return;
+    isCalled = true;
+    if(err) {
+      if(err.code === 18) {
+        log.fatal('Crux.mongo: Failed to authenticate to MongoDb. Please check configuration.');
+      } else {
+        log.fatal('Crux.mongo: Failed to connect to Mongodb. Please check configuration.');
+        log.debug(err);
+      }
+      return done(err);
+    }
+    done();
+  };
+  this.mongo = mongoose.connect(connString, {
+    auto_reconnect: true
+  }, onConnect);
+  this.mongo.connection.on('connected', function() {
+    log.info('Crux.mongo: connection established.');
+    if(isCalled) return;
+    isConnected = true;
+    isCalled = true;
+    done();
+  }).on('disconnected', function() {
+    if(!isConnected) return;
+    log.error('Crux.mongo: Connection terminated.');
+  }).on('reconnected', function() {
+    log.info('Crux.mongo: Connection re-established.');
+  }).on('error', function(e) {
+    log.error('Crux.mongo: Connection encountered an error');
+    log.debug(e);
+  });
+};
+
+/**
+ * Returns a schema definition object by the given name. This function is used when the Mongo component is attached
+ * to other components, to inject this.schema() into their context.
+ * @memberof crux.Database.Mongo
+ * @function getSchema
+ * @instance
+ * @param {string} name - the schema's name
+ * */
+Mongo.prototype.getSchema = function GetSchema(name) {
+  if(typeof this.schemas[name] === 'undefined') {
+    throw new Error('Crux.mongo: Invalid mongo schema for: ' + name);
+  }
+  return this.schemas[name];
+}
+
+
+/**
+ * Returns the mongo connection string based on Mongo's configuration object.
+ * @memberof crux.Database.Mongo
+ * @function __connectionString
+ * @instance
+ * @private
+ * */
+Mongo.prototype.__connectionString = function GetConnectionString() {
+  var str = 'mongodb://',
+    config = this.config;
+  if(_.isString(config.user)) {
+    str += config.user;
+    if(_.isString(config.password)) {
+      str += ':' + config.password;
+    }
+    str += '@';
+  }
+  str += config.host;
+  if(_.isNumber(config.port)) {
+    str += ':' + config.port;
+  }
+  str += '/' + config.database;
+  return str;
+};
+
+/**
+ * Registers a mongoose schema. This is used internally and should not be mangled.
+ * @memberof crux.Database.Mongo
+ * @function Register
+ * @instance
+ * @private
+ * @param {string} name - the schema's name
+ * @param {string} collection - the collection name.
+ * */
+Mongo.prototype.Register = function CreateSchema(name, collection) {
+  return new this.Schema(name, collection, this.config.debug);
+};
+
+/**
+ * Returns a types wrapper over mongoose's schema. It basically caps everything out.
+ * @memberof crux.Database.Mongo
+ * @function getTypes
+ * @instance
+ * @private
+ * */
+Mongo.prototype.getTypes = function GetSchemaTypes() {
+  var d = {},
+    types = mongoose.Schema.Types;
+  /* Base types are automatically added. */
+  var base = ['String', 'Number', 'Date', 'Boolean'];
+  _.forEach(base, function(name) {
+    d[name.toUpperCase()] = name;
+  });
+  /* Array objects */
+  d['ARRAY'] = function SchemaArray(ofValues) {
+    var q = [];
+    if(typeof ofValues !== 'undefined') {
+      q.push(ofValues);
+    }
+    q.__proto__.__mongo_type = 'ARRAY';
+    return q;
+  };
+  return d;
+};
+
+
+
+module.exports = Mongo;</pre>
+	</article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a>
+	on Thu Feb 26th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

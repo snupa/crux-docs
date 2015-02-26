@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Crux Source: lib/components/build/process/angular.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.dark.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.simplex.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header go-back">
+		<span class="nav-back">
+			<a href="http://crux.pearlhq.com/">Official site</a>
+		</span>
+	</div>
+	<div class="navbar-header">
+		<a href="index.html" class="crux-logo">
+			<img class="nav-logo" alt="&nbsp;" src="/assets/img/crux-green.png" data-reactid=".0.0.0.0.0.0" />
+		</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.html">crux</a></li><li><a href="crux.Build.html">crux.Build</a></li><li><a href="crux.Build.Angular.html">crux.Build.Angular</a></li><li><a href="crux.Database.html">crux.Database</a></li><li><a href="crux.Server.html">crux.Server</a></li><li><a href="crux.Store.html">crux.Store</a></li><li><a href="crux.util.html">crux.util</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.Application.html">crux.Application</a></li><li><a href="crux.Build.Angular.Core.html">crux.Build.Angular.Core</a></li><li><a href="crux.Build.Angular.Index.html">crux.Build.Angular.Index</a></li><li><a href="crux.Build.Angular.Templates.html">crux.Build.Angular.Templates</a></li><li><a href="crux.Build.Build.html">crux.Build.Build</a></li><li><a href="crux.Build.Commonjs.html">crux.Build.Commonjs</a></li><li><a href="crux.Build.Interface.html">crux.Build.Interface</a></li><li><a href="crux.Build.Less.html">crux.Build.Less</a></li><li><a href="crux.Build.Sass.html">crux.Build.Sass</a></li><li><a href="crux.Build.Templates.html">crux.Build.Templates</a></li><li><a href="crux.Component.html">crux.Component</a></li><li><a href="crux.Database.Mongo.html">crux.Database.Mongo</a></li><li><a href="crux.Database.Mongo.Schema.html">crux.Database.Mongo.Schema</a></li><li><a href="crux.Database.Sql.html">crux.Database.Sql</a></li><li><a href="crux.Database.Sql.Model.html">crux.Database.Sql.Model</a></li><li><a href="crux.Registry.html">crux.Registry</a></li><li><a href="crux.Server.Chain.html">crux.Server.Chain</a></li><li><a href="crux.Server.Request.html">crux.Server.Request</a></li><li><a href="crux.Server.Route.html">crux.Server.Route</a></li><li><a href="crux.Server.Server.html">crux.Server.Server</a></li><li><a href="crux.Server.Utils.html">crux.Server.Utils</a></li><li><a href="crux.Server.Validations.html">crux.Server.Validations</a></li><li><a href="crux.Store.Redis.html">crux.Store.Redis</a></li><li><a href="crux.util.install.html">crux.util.install</a></li><li><a href="crux.util.Parser.html">crux.util.Parser</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="interfaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Interfaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="crux.Service.html">crux.Service</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#_">_</a></li><li><a href="global.html#__rootdir">__rootdir</a></li><li><a href="global.html#log">log</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+    		<h1 class="page-title">Source: lib/components/build/process/angular.js</h1>
+			
+
+		<h1 class="page-title">Source: lib/components/build/process/angular.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript ">var util = require('util'),
+  async = require('async'),
+  fs = require('fs'),
+  path = require('path'),
+  Kutil = require('../../../util/util');
+
+var Interface = require('../interface'),
+  Templates = require('./model/angular-templates'),
+  Index = require('./model/angular-index'),
+  Core = require('./model/angular-core');
+
+/**
+* The crux angular build process provides angular-related building process. As most angular applications tend to be stored
+ * into a single javaScript file placed on a CDN, this component facilitates the process, watching and building (concatenating) all angular
+ * files found under the root project directory&lt;br/>
+ * The process is divided into 3 separate sub-processes that can all or some be included:&lt;br/>
+ * - {@link crux.Build.Angular.Core} - handles javaScript concatenation&lt;br/>
+ * - {@link crux.Build.Angular.Templates} - handles html caching with angular's $templateCache service&lt;br/>
+ * - {@link crux.Build.Angular.Index} - watcher over the index.html root file and copies it into the public folder.&lt;br/>&lt;br/>
+ * &lt;b>Note&lt;/b>: the main angular process still inherits from {@link crux.Build.Interface} but it is more of a sub-process manager over
+ * all of angular's subprocesses.&lt;br/>
+   &lt;b>Note 2&lt;/b>: This class should not be overridden or modified in any way, as it may cause unstability.&lt;br/>
+ * @namespace crux.Build.Angular
+ * */
+
+var process = function CruxBuildSass() {
+  Interface.apply(this, arguments);
+  this.name = 'angular';
+  this.templates = null;  // the model/angular-templates object
+  this.core = null;     // the model/angular-core object
+  this.index = null;   // the model/angular-index
+};
+util.inherits(process, Interface);
+
+process.default = {
+  templates: Templates.default,
+  core: Core.default,
+  index: Index.default
+};
+
+process.prototype.packages = function Dependencies() {
+  return ['node-watch@0.3.4'];
+};
+
+/**
+ * Initializes the angular build process, loading any angular sub-processes&lt;br/>
+ * @memberof crux.Build.Angular
+ * @function init
+ * */
+process.prototype.init = function Initialize(userConfig) {
+  if(userConfig) {
+    if(typeof userConfig['templates'] === 'object') {
+      this.templates = new Templates(this.config.templates);
+      this.bindEvents(this.templates);
+    }
+    if(typeof userConfig['core'] === 'object') {
+      this.core = new Core(this.config.core);
+      this.bindEvents(this.core);
+    }
+    if(typeof userConfig['index'] === 'object') {
+      this.index = new Index(this.config.index);
+      this.bindEvents(this.index);
+    }
+  }
+  this.paths.push('.'); // We only do  this so that the build component will run our watch() and run()
+};
+
+
+/**
+* Overrides the interface's watch() function, by calling all of its sub-processes's watch() function
+ *
+ * @memberof crux.Build.Angular
+ * @function watch
+* */
+process.prototype.watch = function WatchFiles(done) {
+  var _watches = [],
+    self = this;
+  if(this.templates) {
+    _watches.push(function(ready) {
+      self.templates.watch(ready);
+    });
+  }
+  if(this.core) {
+    _watches.push(function(ready) {
+      self.core.watch(ready);
+    });
+  }
+  if(this.index) {
+    _watches.push(function(ready) {
+      self.index.watch(ready);
+    })
+  }
+  async.series(_watches, done);
+};
+
+/**
+* Runs all configured angular sub-processes
+ * @memberof crux.Build.Angular
+ * @function run
+ * @param {Function} done - the on complete callback.
+* */
+process.prototype.run = function RunAngular(done) {
+  var _runs = [],
+    done = (typeof done === 'function' ? done : function(){}),
+    self = this;
+  if(this.templates) {
+    _runs.push(function(ready) {
+      self.templates.run(ready);
+    });
+  }
+  if(this.core) {
+    _runs.push(function(ready) {
+      self.core.run(ready);
+    });
+  }
+  if(this.index) {
+    _runs.push(function(ready) {
+      self.index.run(ready);
+    })
+  }
+  async.series(_runs, done);
+};
+
+
+process.Templates = Templates;
+process.Core = Core;
+process.Index = Index;
+module.exports = process;
+</pre>
+	</article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a>
+	on Thu Feb 26th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>
