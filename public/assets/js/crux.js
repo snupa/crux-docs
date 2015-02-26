@@ -20601,9 +20601,9 @@ var GettingStarted =
         'text': 'Home',
       },
       {
-        'id': 'components-download',
+        'id': 'components-install',
         'link': '#',
-        'text': 'Download',
+        'text': 'Install',
       }
     ],
 
