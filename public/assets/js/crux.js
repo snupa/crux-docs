@@ -20601,9 +20601,9 @@ var GettingStarted =
         'text': 'Home',
       },
       {
-        'id': 'components-install',
+        'id': 'components-download',
         'link': '#',
-        'text': 'Install',
+        'text': 'Download',
       }
     ],
 
@@ -20617,12 +20617,12 @@ var GettingStarted =
       {
         'id': 'components-mongoose',
         'link': '#',
-        'text': 'Mongo',
+        'text': 'Mongoose',
       },
       {
         'id': 'components-sequelize',
         'link': '#',
-        'text': 'Sql',
+        'text': 'Sequelize (mysql)',
       },
       {
         'id': 'components-redis',
@@ -20637,7 +20637,7 @@ var GettingStarted =
       {
         'id': 'components-server',
         'link': '#',
-        'text': 'HTTP Server',
+        'text': 'Express web server',
       }
     ];
 
@@ -20664,12 +20664,10 @@ Component.navigation_menu = (
         contentLink: "#components", 
         more: true, 
         submenu: Components}
-      ),
+      ), 
       React.createElement(ListItem, {
-          contentText: "Docs",
-          avatarLink: "/docs/",
-          more: false
-        }
+        contentText: "Docs", 
+        contentLink: "/docs/"}
       )
     )
   )
@@ -21116,6 +21114,18 @@ module.exports = React.createClass({
           hasMenu = (
             React.createElement("ul", {className: "e-sublist-navigation"}, 
               submenuItems
+            )
+          );
+        }
+
+        if (contentLink && !self.props.submenu) {
+          return (
+            React.createElement("li", {className: self.state.isActive}, 
+              React.createElement("a", {href: contentLink}, 
+                  contentText, 
+                  hasMore
+              ), 
+              hasMenu
             )
           );
         }
