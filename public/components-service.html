@@ -1,17 +1,66 @@
-<!--   Service Page       -->
+<!--   Service Page     -->
 <div class="e-container">
-    <div id="components-service">
-        <div class="clearfix">
-            <div class="e-brick-12 e-padding-top-50 e-padding-bottom-100">
-                <h3 class="e-display-2 e-text-green-500  e-padding-top-50">What it does?</h3>
-                <p class="e-subhead e-margin-bottom-5">Separation of concern &amp; domain is a key aspect in every project; therefore the service component allows you to define singleton service components, injecting them in predefined components (routes, other services, etc.)</p>
-                <p class="e-subhead e-margin-bottom-5">Auto-loading service definitions and starting them up with a specific life cycle, with environment-configuration ready and in place on service creation.</p>
-                <p class="e-subhead e-margin-bottom-100">Allows service inheritance and the possibility to extend the base service with functionality to be available in every other service definition.</p>
-                <div class="e-text-center">
-                    <img class="e-img-rsp e-padding-top-50 e-padding-bottom-50" src="../assets/img/crux-logo-grey.png" alt="Crux">
-                </div>
-            </div>
+  <div id="components-service">
+    <div class="clearfix">
+      <div class="e-brick-12 e-padding-top-50 e-padding-bottom-100">
+        <h3 class="e-display-2 e-text-green-500  e-padding-top-50">What it does?</h3>
+        <p class="e-subhead e-margin-bottom-5">Separation of concern &amp; domain is a key aspect in every project; therefore the service component allows you to define singleton service components, injecting them in predefined components (routes, other services, etc.)</p>
+        <p class="e-subhead e-margin-bottom-5">Auto-loading service definitions and starting them up with a specific life cycle, with environment-configuration ready and in place on service creation.</p>
+        <p class="e-subhead e-margin-bottom-5">Allows service inheritance and the possibility to extend the base service with functionality to be available in every other service definition.</p>
+        <p class="e-margin-bottom-5">
+          The Crux Service component allows the definition of services under a separate folder, and auto-loading them at runtime.
+          Usually, services defined by the developer should be considered as singleton instances (instantiated once, at require time). Note that this is the base service interface that is exposed to the developer via crux.Service. All user-defined services must extend the base service class.<br/>
+          This interface can be extended by adding functionality to it. Once a function is attached to it, it will be available to all user-defined services.
+          <br/>
+          <b>Note</b>: Crux service component's only configuration is the path to the service folder. When initialized, it will proceed to require all files under the specified directory, and include those that extend crux.Service.<br/>
+          The lifecycle of a service is similar to the one of a crux component:<br>
+        <ul>
+          <li>service class is being instantiated (new service())</li>
+          <li>call init() of service instance (if overridden)</li>
+          <li>call run(callback) of service instance (if overridden)</li>
+        </ul>
+        </p>
+        <p class="e-subhead e-margin-bottom-5">
+          All you need to do is to install (or use) the core component called <b>service.</b><br/>
+          <b>OR</b><br/>
+          <b>crux install service</b> [additional crux components] - in your project's folder.
+          <br/>
+
+        For the complete API documentation, visit <a href="/docs/crux.Service.html">Crux.Service API</a>.
+        </p>
+        <div class="e-text-center">
+          <img class="e-img-rsp e-padding-top-50 e-padding-bottom-50" src="../assets/img/crux-logo-grey.png" alt="Crux">
         </div>
+  <pre class="code">
+  // app.js
+  var crux = require('node-crux'),
+    app = crux.app;
+  crux.globalize(); // we place crux under global['crux'] for convenience.
+  app.components(['log', 'service']);
+  app.appConfig({ // we just configure our service component. This can also be inserted in the project's configuration.
+    service: {
+      path: 'app/services'  // all js files under app/services will be auto-loaded and injected in other crux components.
+    }
+  });
+  app.run();
+
+  // app/services/myservice.js
+  var service = function MyService() {};
+  crux.extends(service, crux.Service);
+
+  service.prototype.init = function() {
+    // function called when the crux service component is initialized.
+  };
+
+  service.prototype.run = function(done) {
+    // function called when the crux service component has loaded the app's services and is ready to run them.
+    console.log('MyService is now running...');
+    done();
+  };
+  module.exports = new service(); // we treat our service as a singleton.
+  </pre>
+      </div>
     </div>
+  </div>
 </div>
 <!-- End Service Page -->

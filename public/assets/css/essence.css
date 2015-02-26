@@ -4511,7 +4511,7 @@ button.simple-button {
   box-shadow: 0;
   border: none;
 }
-code {
+code, .code {
   background-color: #e8f5e9;
   border: 1px solid #e1e1e8;
   border-radius: 4px;

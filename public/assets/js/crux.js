@@ -20601,9 +20601,9 @@ var GettingStarted =
         'text': 'Home',
       },
       {
-        'id': 'components-download',
+        'id': 'components-install',
         'link': '#',
-        'text': 'Download',
+        'text': 'Install',
       }
     ],
 
@@ -20617,12 +20617,12 @@ var GettingStarted =
       {
         'id': 'components-mongoose',
         'link': '#',
-        'text': 'Mongoose',
+        'text': 'Mongo',
       },
       {
         'id': 'components-sequelize',
         'link': '#',
-        'text': 'Sequelize (mysql)',
+        'text': 'Sql',
       },
       {
         'id': 'components-redis',
@@ -20637,7 +20637,7 @@ var GettingStarted =
       {
         'id': 'components-server',
         'link': '#',
-        'text': 'Express web server',
+        'text': 'HTTP Server',
       }
     ];
 
@@ -20664,6 +20664,12 @@ Component.navigation_menu = (
         contentLink: "#components", 
         more: true, 
         submenu: Components}
+      ),
+      React.createElement(ListItem, {
+          contentText: "Docs",
+          avatarLink: "/docs/",
+          more: false
+        }
       )
     )
   )

@@ -4,13 +4,33 @@
         <div class="clearfix">
             <div class="e-brick-12 e-padding-top-50 e-padding-bottom-50">
                 <h3 class="e-display-2 e-text-green-500">What is it?</h3>
-                <p class="e-subhead e-margin-bottom-5">Wrapper over Mongoose to promisify the queries, and exposes a similar model-definition API like Sequelize.</p>
-                <div class="e-text-center">
-                    <img class="e-img-rsp e-padding-top-50 e-padding-bottom-50" src="../assets/img/crux-logo-grey.png" alt="Crux">
-                </div>
+                <p class="e-subhead e-margin-bottom-15">Wrapper over Mongoose to promisify the queries, and exposes a similar model-definition API like Sequelize.
+                The system will also perform schema auto-loading and handle relationships between schemas.</p>
+                <p>
+                    See <a href="/docs/crux.Database.Mongo.html">API Documentation</a>.
+                </p>
                 <h3 class="e-display-2 e-text-green-500">What it does?</h3>
                 <p class="e-subhead e-margin-bottom-5">Auto-load schema definitions along with their relationships</p>
-                <p class="e-subhead e-margin-bottom-5">Inject "this.schema(name)" functionality in various parts of the application (service-level, route-level, other components)</p>
+                <p class="e-subhead e-margin-bottom-15">Inject "this.schema(name)" functionality in various parts of the application (service-level, route-level, other components)</p>
+<pre class="code">
+// current schema file: schemas/user.js
+   module.exports = function(userSchema, Mongo) {
+     userSchema.collection('users'); // this will set the mongodb collection name from user to users
+     userSchema
+       .field('name', Mongo.STRING, {
+         defaultValue: 'John'
+       })
+       .field('is_active', Mongo.BOOLEAN, {
+         defaultValue: true
+       })
+       .field('created_at', Mongo.DATE, {
+         defaultValue: Date.now
+       });
+       userSchema
+         .index('name')
+         .belongsTo('application');  // this generates the mongo property application_id of type ObjectId
+   };
+</pre>
                 <div class="e-text-center">
                     <img class="e-img-rsp e-padding-top-50 e-padding-bottom-50" src="../assets/img/crux-logo-grey.png" alt="Crux">
                 </div>
