@@ -6,7 +6,7 @@ app
  .path(__dirname)
  .projectConfig('config/_project.json')
  .envConfig('config/', 'json')
- .components(["log","static"], true);
+ .components(["log",'build', "static"], true);
 
 app.init();
 app.run(function() {
