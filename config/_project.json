@@ -9,5 +9,19 @@
             "index": "index.html",
             "ghostMode": false
         }
+    },
+  "build": {
+    "autoRun": true,
+    "autoWatch": true,
+    "process": {
+      "less": {
+        "path": "less",
+        "entry": "crux.less",
+        "output": "public/assets/css/crux.css",
+        "files": {
+          "essence.less": "public/assets/css/essence.css"
+        }
+      }
     }
+  }
 }
