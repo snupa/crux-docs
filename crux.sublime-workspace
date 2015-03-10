@@ -1,0 +1,891 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"text",
+				"text-transform"
+			],
+			[
+				"de",
+				"Design"
+			],
+			[
+				"compo",
+				"components"
+			],
+			[
+				"e-text",
+				"e-text-blue-grey-400"
+			],
+			[
+				"paddi",
+				"padding-bottom"
+			],
+			[
+				"paddin",
+				"padding-top"
+			],
+			[
+				"margi",
+				"margin-top"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"e-divi",
+				"e-divider-thickest"
+			],
+			[
+				"e-divider-",
+				"e-divider-thickest"
+			],
+			[
+				"e-div",
+				"e-divider-thick"
+			],
+			[
+				"e-divider-thick",
+				"e-divider-thick"
+			],
+			[
+				"edivide",
+				"e-divider-regular"
+			],
+			[
+				"e-divider",
+				"e-divider-thin"
+			],
+			[
+				"e-divider-th",
+				"e-divider-thinnest"
+			],
+			[
+				"edi",
+				"e-divider"
+			],
+			[
+				"e-divider-thi",
+				"e-divider-thin"
+			],
+			[
+				"edivider",
+				"e-divider"
+			],
+			[
+				"edivi",
+				"e-divider-thinnest"
+			],
+			[
+				"e-di",
+				"e-divider"
+			],
+			[
+				"edivider-t",
+				"e-divider-thick"
+			],
+			[
+				"e",
+				"e-divider-thinnest"
+			],
+			[
+				"divider",
+				"divider-thinnest"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"gre",
+				" green(color)"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"e-margin",
+				"e-margin-bottom-50"
+			],
+			[
+				"e-margi",
+				"e-margin-top-50"
+			],
+			[
+				"e-padding-t",
+				"e-padding-top-50"
+			],
+			[
+				"e-pa",
+				"e-padding-bottom-50"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"e-",
+				"e-btn"
+			],
+			[
+				"e-te",
+				"e-text-black"
+			],
+			[
+				"e-text-",
+				"e-text-indigo-400"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "less/crux.less",
+			"settings":
+			{
+				"buffer_size": 481,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/components-system.html",
+			"settings":
+			{
+				"buffer_size": 3662,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/components-install.html",
+			"settings":
+			{
+				"buffer_size": 4581,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"package inst",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 464.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/wamp/www/crux-docs",
+		"/C/wamp/www/crux-docs/less/essence/dividers",
+		"/C/wamp/www/crux-docs/less/essence/site-components",
+		"/C/wamp/www/crux-docs/public",
+		"/C/wamp/www/crux-docs/public/assets"
+	],
+	"file_history":
+	[
+		"/C/wamp/www/crux-docs/less/essence/site-components/site-components.less",
+		"/C/wamp/www/crux-docs/public/components-install.html",
+		"/C/wamp/www/crux-docs/less/essence.less",
+		"/C/wamp/www/crux-docs/public/index.html",
+		"/C/wamp/www/crux-docs/public/components-home.html",
+		"/C/wamp/www/crux-docs/node_modules/node-crux/node_modules/browser-sync/node_modules/browser-sync-ui/node_modules/weinre/web/doc/Running.html",
+		"/C/wamp/www/essence/static/components-colors.html",
+		"/C/wamp/www/essence/static/components-typography.html",
+		"/C/wamp/www/essence/src/less/essence/cards_chips/cards.less",
+		"/C/wamp/www/essence/src/less/essence/appbar/appbar.less",
+		"/C/wamp/www/essence/src/less/essence/menu/menu.less",
+		"/C/wamp/www/essence/src/js/components/ComponentsList.js",
+		"/C/wamp/www/essence/src/less/essence/navigation-drawer/navigation-drawer.less",
+		"/C/wamp/www/essence/static/index.html",
+		"/C/wamp/www/essence/static/components-tooltips.html",
+		"/C/wamp/www/essence/static/components-toolbar.html",
+		"/C/wamp/www/essence/static/components-text-fields.html",
+		"/C/wamp/www/essence/static/components-tabs.html",
+		"/C/wamp/www/essence/static/components-home.html",
+		"/C/wamp/www/essence/static/components-icons.html",
+		"/C/wamp/www/essence/static/components-list-controls.html",
+		"/C/wamp/www/essence/static/components-lists.html",
+		"/C/wamp/www/essence/static/components-bottom-sheets.html",
+		"/C/wamp/www/essence/static/components-buttons.html",
+		"/C/wamp/www/essence/static/components-appbar.html",
+		"/C/wamp/www/essence/static/components-cards.html",
+		"/C/wamp/www/essence/static/components-chips.html",
+		"/C/wamp/www/essence/static/components-classes.html",
+		"/C/wamp/www/essence/static/components-contact.html",
+		"/C/wamp/www/essence/static/components-dialogs.html",
+		"/C/wamp/www/essence/static/components-dividers.html",
+		"/C/wamp/www/essence/static/components-getting-started.html",
+		"/C/wamp/www/essence/static/components-grids.html",
+		"/C/wamp/www/essence/static/components-material-design.html",
+		"/C/wamp/www/essence/static/components-menus.html",
+		"/C/wamp/www/essence/static/components-navigation.html",
+		"/C/wamp/www/essence/static/components-paper.html",
+		"/C/wamp/www/essence/static/components-progress.html",
+		"/C/wamp/www/essence/static/components-slider.html",
+		"/C/wamp/www/essence/static/components-switches.html",
+		"/C/wamp/www/essence/static/components-snackbars-toast.html",
+		"/C/wamp/www/essence/src/less/essence/utils/utils.less",
+		"/C/wamp/www/essence/src/less/essence/dividers/dividers.less",
+		"/C/wamp/www/essence/src/less/essence/typography/type.less",
+		"/C/wamp/www/essence/src/less/essence.less",
+		"/C/wamp/www/essence/src/less/essence/essence-dividers.less",
+		"/C/wamp/www/essence/development/typography/index.html",
+		"/C/wamp/www/essence/development/Dividers/index.html",
+		"/C/wamp/www/essence/src/less/essence/Dividers/dividers.less",
+		"/C/wamp/www/essence/src/less/essence/site-components/site-components.less",
+		"/C/wamp/www/essence/src/less/essence/essence-variables.less",
+		"/C/wamp/www/essence/src/less/essence/buttons/button.less",
+		"/C/wamp/www/essence/development/menu/menu.html",
+		"/C/wamp/www/essence/src/less/essence/buttons/flat.less",
+		"/C/wamp/www/essence/src/less/essence/site-components.less",
+		"/C/wamp/www/essence/static/assets/css/essence.css",
+		"/C/wamp/www/essence/development/navigation-drawer/navigation-desktop.html",
+		"/C/wamp/www/essence/src/less/essence/essence-appbar.less",
+		"/C/wamp/www/essence/src/less/essence/essence-colors.less",
+		"/D/projects/bmo5/web/templates/two_column.mas",
+		"/D/projects/bmo5/lib/BMO/Controller/Account/ContactAccount.pm",
+		"/D/projects/bmo5/root/js/source/bmo/bmo_send_mail.js",
+		"/D/projects/bmo5/web/views/contactus/index.mhtml",
+		"/D/projects/bmo5/lib/SystemConstants.pm",
+		"/D/projects/bmo5/root/less/bmo/bootstrap-overwrite.less",
+		"/D/projects/bmo5/web/views/legal/index.mhtml",
+		"/D/projects/bmo5/web/components/sections/header.mas",
+		"/D/projects/bmo5/web/components/elements/account_menu.mas",
+		"/D/projects/bmo5/node_modules/grunt-contrib-less/node_modules/maxmin/node_modules/gzip-size/node_modules/concat-stream/node_modules/readable-stream/lib/_stream_duplex.js",
+		"/D/projects/bmo5/node_modules/grunt-contrib-less/node_modules/maxmin/node_modules/gzip-size/node_modules/concat-stream/node_modules/readable-stream/lib/_stream_passthrough.js",
+		"/D/projects/bmo5/t/controller/authentication/user_pass_login.t",
+		"/D/projects/bmo5/node_modules/grunt-contrib-less/node_modules/maxmin/node_modules/gzip-size/node_modules/concat-stream/node_modules/typedarray/test/server/undef_globals.js",
+		"/D/projects/bmo5/web/views/account/contactaccount/contact_account.mhtml",
+		"/D/projects/bmo5/web/components/elements/contact_acc_manager.mas",
+		"/D/projects/bmo5/lib/BMO/Controller/ContactUs.pm",
+		"/D/projects/bmo5/node_modules/grunt/CONTRIBUTING.md",
+		"/D/projects/bmo5/node_modules/grunt-contrib-clean/docs/clean-options.md",
+		"/D/projects/bmo5/Changes",
+		"/D/projects/bmo5/Gruntfile.js",
+		"/D/projects/bmo5/root/js/source/bmo/filter.js",
+		"/D/projects/bmo5/root/js/source/bmo/hacks.js",
+		"/D/projects/bmo5/node_modules/grunt-casper/Gruntfile.js",
+		"/D/projects/bmo5/lib/BMO/Schema/Result/GaRow.pm",
+		"/D/projects/bmo5/root/less/bmo/header.less",
+		"/D/projects/bmo5/lib/BMO/Controller/Help.pm",
+		"/D/projects/bmo5/web/templates/home.mas",
+		"/D/projects/bmo5/web/templates/single_column.mas",
+		"/D/projects/bmo5/tests/controller/navigation/side_navigation.t",
+		"/D/projects/bmo5/t/controller/authentication/session_count_increment.t",
+		"/D/projects/bmo5/restart_server.sh",
+		"/D/projects/bmo5/root/less/application.less",
+		"/D/projects/bmo5/root/css/application.css",
+		"/D/projects/bmo5/node_modules/grunt/appveyor.yml",
+		"/D/projects/bmo5/web/components/reports/archive_paginator.mas",
+		"/D/projects/bmo5/node_modules/grunt-contrib-clean/AUTHORS"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"C:\\wamp\\www\\crux-docs",
+			"C:\\wamp\\www\\essence\\src\\less",
+			"C:\\wamp\\www\\essence\\static",
+			"C:\\wamp\\www\\essence",
+			"C:\\wamp\\www\\essence\\src\\less",
+			"C:\\wamp\\www\\essence\\src",
+			"C:\\wamp\\www\\essence",
+			"C:\\wamp\\www\\essence\\src\\less",
+			"C:\\wamp\\www\\essence",
+			"C:\\wamp\\www\\essence\\src",
+			"C:\\wamp\\www\\essence\\development",
+			"C:\\wamp\\www\\essence\\static",
+			"C:\\wamp\\www\\essence\\static\\assets",
+			"C:\\wamp\\www\\essence",
+			"D:\\projects\\bmo5"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"/b",
+			"<b>",
+			"e-subhead",
+			"<div class=\"e-text-center\">\n                    <img class=\"e-img-rsp e-padding-top-50 e-padding-bottom-50\" src=\"../assets/img/crux-logo-grey.png\" alt=\"Crux\">\n                </div>",
+			"b",
+			"e-subhead",
+			"e-display-2",
+			"#2e7d32",
+			"e-subhead",
+			"html",
+			".e-list-navigation",
+			".e-list-navigation .e-sublist-navigation li a",
+			"divider",
+			".font-size",
+			".e-nav-drawer",
+			"e-divider-thick-short",
+			"jpg",
+			"e-divider-thinnest",
+			"e-divider-thick-short",
+			"thick",
+			"e-divider-thick-short",
+			" e-divider-thick-short",
+			" e-text-uppercase e-padding-bottom-15",
+			" e-padding-bottom-15",
+			"hr",
+			"small",
+			"large",
+			"width: 100%;",
+			".e-background-red-100",
+			"e-background-red-100",
+			"!important",
+			".divider",
+			"divider",
+			"e-padding-bottom-25",
+			" e-body2 e-text-white",
+			"@e-unit",
+			"@btn-unit",
+			"e-title e-text-indigo-400",
+			"e-subhead e-text-blue-600",
+			"e-title e-text-indigo-400",
+			"e-subhead e-text-blue-600",
+			"e-title e-text-indigo-400",
+			"e-text-indigo-400 e-title",
+			"e-title e-text-indigo-400",
+			"e-text-grey-400",
+			"e-body2 e-text-blue-grey-400",
+			"e-body2",
+			"e-body2 e-text-blue-grey-400",
+			"e-title e-text-indigo-400",
+			"e-title",
+			"e-title e-text-indigo-400",
+			"component.navigation",
+			"e-nav-footer",
+			"components-contact",
+			"components-contact-reactjs",
+			"line-height-12",
+			"e-brick-12",
+			"e-background-green-600",
+			"e-text-grey-400",
+			"e-text-grey-600",
+			"e-text-grey-400",
+			"e-text-grey-600",
+			"e-text-grey-400",
+			"e-subhead e-text-blue-600",
+			" class=\"e-text-green-500\"",
+			"e-subhead e-text-blue-600",
+			"e-display-1 e-text-green-500",
+			"e-subhead",
+			"e-subhead e-text-blue-600",
+			"e-subhead",
+			"e-subhead e-text-blue-600",
+			"e-subhead",
+			"e-subhead e-text-blue-600",
+			"e-subhead",
+			"e-subhead e-text-blue-600",
+			"paper",
+			"e-subhead e-text-blue-600",
+			"e-display-1 e-text-green-500",
+			"e-subhead",
+			"e-subhead e-text-blue-600",
+			" class=\"e-text-green-500\"",
+			"e-shubead",
+			"e-subhead",
+			"e-subhead e-text-blue-600",
+			" class=\"e-text-green-500\"",
+			"e-subhead",
+			"e-subhead e-text-blue-600",
+			" class=\"e-text-green-500\"",
+			"e-subhead e-text-blue-600",
+			" class=\"e-text-green-500\"",
+			"e-subhead",
+			"e-subhead e-text-blue-600",
+			"e-text-green-500",
+			"<p><code>",
+			"e-subhead e-text-blue-600",
+			"e-text-green-500",
+			" class=\"e-text-green-500\"",
+			"e-subhead",
+			"<p class=\"e-subhead e-text-grey-400\">",
+			"e-subhead",
+			"e-display-1 e-text-green-500",
+			"<h3 class=\"e-text-indigo-400 e-padding-top-50\">",
+			"class=\"e-text-indigo-400\"",
+			"<h3 class=\"e-text-indigo-400\">",
+			"e-display-1 e-text-indigo-400",
+			"e-subhead",
+			"e-subhead e-text-blue-600",
+			"e-text-green-500",
+			"e-subhead e-text-blue-600",
+			"e-subhead",
+			"Label ",
+			"label",
+			"Label",
+			"label",
+			"Label",
+			"icon-container",
+			"raised",
+			"body2",
+			"raised",
+			"e-subhead e-text-blue-600",
+			"e-subhead ",
+			"400",
+			"e-subhead",
+			"e-text-green-500",
+			"jpg",
+			"contact",
+			".3.2",
+			"components-contact-reactjs"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"e-divider thick short",
+			"e-divider thinnest",
+			"e-divider thick short"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "less/crux.less",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 481,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								451,
+								451
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/LESS/LESS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public/components-system.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3662,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1650,
+								1650
+							],
+							[
+								2718,
+								2718
+							],
+							[
+								3184,
+								3184
+							],
+							[
+								3535,
+								3535
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "public/components-install.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4581,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4427,
+								4451
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 378.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "crux.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"contact_us",
+				"web\\components\\elements\\account_menu.mas"
+			],
+			[
+				"grunt",
+				"Gruntfile.js"
+			],
+			[
+				"header.mas",
+				"web\\components\\sections\\header.mas"
+			],
+			[
+				"single",
+				"web\\templates\\single_column.mas"
+			],
+			[
+				"application",
+				"root\\less\\application.less"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\wamp\\www\\essence\\essence.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 326.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

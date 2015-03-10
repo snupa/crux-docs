@@ -1,0 +1,31 @@
+.e-main-content {
+  min-height: 1000px;
+}
+#navigationMenu {
+  margin-top: 0;
+}
+#navigationMenu .e-nav-header {
+  position: relative;
+}
+#navigationMenu .e-nav-header .nav-logo {
+  position: absolute;
+  top: 50%;
+  left: 32px;
+  margin: -18px 0 0;
+  max-width: 92px;
+  float: none;
+}
+#navigationMenu .e-nav-footer {
+  display: none;
+}
+#navigationMenu .e-list-navigation .e-sublist-navigation li a:hover,
+#navigationMenu .e-list-navigation .e-sublist-navigation li a:focus {
+  color: #4caf50 !important;
+}
+.e-footer a:hover {
+  color: #1b5e20;
+}
+#components-home-page > .e-container h3 > a:hover,
+p > a.e-text-green-500:hover {
+  color: #2e7d32 !important;
+}

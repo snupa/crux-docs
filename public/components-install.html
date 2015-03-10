@@ -2,49 +2,50 @@
 <div class="e-container">
     <div id="components-download">
         <div class="clearfix">
-            <div class="e-brick-12 e-padding-top-50 e-padding-bottom-50">
-                <h3 class="e-display-2 e-text-green-500 e-margin-bottom-50">Installation</h3>
-                <p class="e-subhead e-margin-bottom-5">If you would like to install crux globally and use it as a tool to generate project boilerplates,</p>
-                <p class="e-subhead e-margin-bottom-5">
-                    <b>npm install -g node-crux</b>
+            <div class="brick brick-12 e-padding-top-100 e-padding-bottom-50">
+                <h3 class="e-display-1 e-text-uppercase e-text-green-500 e-padding-top-25">Installation</h3>
+                <div class="e-divider thick short e-background-green-500"></div>
+                <p class="e-body1 e-text-blue-grey-400 e-margin-bottom-5">If you would like to install crux globally and use it as a tool to generate project boilerplates,</p>
+                <p class="e-body1 e-text-blue-grey-400 e-margin-bottom-5">
+                    <code>npm install -g node-crux</code>
                 </p>
-                <p class="e-subhead e-margin-bottom-5">
+                <p class="e-body1 e-text-blue-grey-400 e-margin-bottom-5">
                     This will add the <b>crux</b> executable to the system's path, allowing you to use crux's CLI to install various components. You could do so by calling
                 </p>
-                <p class="e-subhead e-margin-bottom-15">
-                    <b>crux install [list of components to install]</b><br/>
+                <p class="e-body1 e-text-blue-grey-400 e-margin-bottom-15">
+                    <code>crux install</code> [list of components to install]<br/>
                     Available components:<br/>
                     <ul>
-                        <li><b>scss</b> - Installs the SCSS build system and a basic web server for serving the generated static content</li>
-                        <li><b>less</b> - Installs the LESS build system and a basic web server for serving the generated content</li>
-                        <li><b>angular</b> - Installs the Angular build system, along with a basic web server for serving the built content</li>
-                        <li><b>cjs</b> - Installs the CommonJS + Templates build system, along with a basic web server</li>
-                        <li><b>redis</b> - Installs the standalone redis component. This is to be used along with at least one other component</li>
-                        <li><b>mongo</b> - Installs the standalone mongodb wrapper. This is to be used along with at least one other component</li>
-                        <li><b>sql</b> - Installs the standalone sql wrapper. This is to be used along with at least one other component.</li>
-                        <li><b>server</b> - Installs the crux http server</li>
-                        <li><b>service</b> - Installs the service-layer component. This is to be used with at least one other component.</li>
-                        <li><b>static</b> - Installs the express static server</li>
+                        <li class="e-body1 e-text-blue-grey-400"><b>scss</b> - Installs the SCSS build system and a basic web server for serving the generated static content</li>
+                        <li class="e-body1 e-text-blue-grey-400"><b>less</b> - Installs the LESS build system and a basic web server for serving the generated content</li>
+                        <li class="e-body1 e-text-blue-grey-400"><b>angular</b> - Installs the Angular build system, along with a basic web server for serving the built content</li>
+                        <li class="e-body1 e-text-blue-grey-400"><b>cjs</b> - Installs the CommonJS + Templates build system, along with a basic web server</li>
+                        <li class="e-body1 e-text-blue-grey-400"><b>redis</b> - Installs the standalone redis component. This is to be used along with at least one other component</li>
+                        <li class="e-body1 e-text-blue-grey-400"><b>mongo</b> - Installs the standalone mongodb wrapper. This is to be used along with at least one other component</li>
+                        <li class="e-body1 e-text-blue-grey-400"><b>sql</b> - Installs the standalone sql wrapper. This is to be used along with at least one other component.</li>
+                        <li class="e-body1 e-text-blue-grey-400"><b>server</b> - Installs the crux http server</li>
+                        <li class="e-body1 e-text-blue-grey-400"><b>service</b> - Installs the service-layer component. This is to be used with at least one other component.</li>
+                        <li class="e-body1 e-text-blue-grey-400"><b>static</b> - Installs the express static server</li>
                     </ul>
                 </p>
-                <p class="e-subhead e-margin-bottom-5">
+                <p class="e-body1 e-text-blue-grey-400 e-margin-bottom-5">
                     A few application bootstrap examples...<br/>
-                    <p>
-                        <b>crux install angular less</b> - creates an application structure suitable for front-end applications, equipped with less watcher and compiler along with angular's boilerplate application structure, allowing
+                    <p class="e-body1 e-text-blue-grey-400">
+                        <code>crux install angular less</code> - creates an application structure suitable for front-end applications, equipped with less watcher and compiler along with angular's boilerplate application structure, allowing
                         the developer to focus on the application, and not on how to make things work and tie them up together.<br/>
                     </p>
-                    <p>
-                        <b>crux install server sql service</b> - creates a full back-end project suitable for API applications that use MySQL as their database.
+                    <p class="e-body1 e-text-blue-grey-400">
+                        <code>crux install server sql service</code> - creates a full back-end project suitable for API applications that use MySQL as their database.
                     </p>
-                    <p>
-                        <b>crux install server mongo redis</b> - creates a full back-end project suitable for applications that use the Redis store and MongoDB in their stack
+                    <p class="e-body1 e-text-blue-grey-400">
+                        <code>crux install server mongo redis</code> - creates a full back-end project suitable for applications that use the Redis store and MongoDB in their stack
                     </p>
                 </p>
                 <div class="e-text-center">
-                    <img class="e-img-rsp e-padding-top-50 e-padding-bottom-50" src="../assets/img/crux-logo-grey.png" alt="Crux">
+                <div class="e-divider thinnest e-background-grey-400"></div>
                 </div>
-                <p class="e-subhead">
-                    For a more complete view on Crux-powered applications, you can visit the <a href="https://github.com/PearlVentures/Crux-apps" target="_blank">Example projects</a> section.
+                <p class="e-body1 e-text-blue-grey-400">
+                    For a more complete view on Crux-powered applications, you can visit the <a href="https://github.com/PearlVentures/Crux-apps" target="_blank" class="e-text-green-500">Example projects</a> section.
                 </p>
             </div>
         </div>

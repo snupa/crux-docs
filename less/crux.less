@@ -1,2 +1,37 @@
-body {
+// html,
+// body {
+// 	min-height: 1000px;
+// }
+.e-main-content {
+	min-height: 1000px;
 }
+#navigationMenu {
+	margin-top: 0;
+	.e-nav-header {
+		position: relative;
+		.nav-logo {
+			position: absolute;
+			top: 50%;
+			left: 32px;
+			margin: -18px 0 0;
+			max-width: 92px;
+			float: none;
+		}
+	}
+	.e-nav-footer {
+		display: none;
+	}
+	.e-list-navigation .e-sublist-navigation li a {
+		&:hover,
+		&:focus {
+			color: #4caf50 !important;
+		}
+	}	
+}
+.e-footer a:hover {
+	color: #1b5e20;
+}
+#components-home-page > .e-container h3 > a:hover,
+p > a.e-text-green-500:hover {
+	color: #2e7d32 !important;
+} 
