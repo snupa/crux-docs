@@ -18,9 +18,11 @@
 #navigationMenu .e-nav-footer {
   display: none;
 }
-#navigationMenu .e-list-navigation > li a:first-child {
+#navigationMenu .e-list-navigation > li:first-child a {
   background-image: url(../public/assets/img/house.png);
+  background-size: 20px 30px;
   background-repeat: no-repeat;
+  background-position: 0 5px;
 }
 #navigationMenu .e-sublist-navigation li a:hover,
 #navigationMenu .e-sublist-navigation li a:focus {
