@@ -18,8 +18,12 @@
 #navigationMenu .e-nav-footer {
   display: none;
 }
-#navigationMenu .e-list-navigation .e-sublist-navigation li a:hover,
-#navigationMenu .e-list-navigation .e-sublist-navigation li a:focus {
+#navigationMenu .e-list-navigation > li a:first-child {
+  background-image: url(../public/assets/img/house.png);
+  background-repeat: no-repeat;
+}
+#navigationMenu .e-sublist-navigation li a:hover,
+#navigationMenu .e-sublist-navigation li a:focus {
   color: #4caf50 !important;
 }
 .e-footer a:hover {
