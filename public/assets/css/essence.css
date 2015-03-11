@@ -7384,11 +7384,16 @@ div[id^="components-"] .e-paper-container .e-paper {
 #navigationMenu .e-nav-drawer nav .e-navigation-wrapper .e-list-navigation > li > a,
 #navigationMenu .e-nav-drawer-mobile nav .e-navigation-wrapper .e-list-navigation > li > a {
   color: #78909c;
-  padding: 0 32px;
+  padding: 0 16px;
+  text-transform: uppercase;
 }
 #navigationMenu .e-nav-drawer nav .e-navigation-wrapper .e-list-navigation > li > a i,
 #navigationMenu .e-nav-drawer-mobile nav .e-navigation-wrapper .e-list-navigation > li > a i {
-  color: inherit;
+  display: none;
+}
+#navigationMenu .e-nav-drawer nav .e-navigation-wrapper .e-list-navigation > li .e-sublist-navigation li > a,
+#navigationMenu .e-nav-drawer-mobile nav .e-navigation-wrapper .e-list-navigation > li .e-sublist-navigation li > a {
+  padding: 0 34px;
 }
 #navigationMenu .e-nav-drawer nav .e-navigation-wrapper .e-list-navigation > li.active .e-sublist-navigation,
 #navigationMenu .e-nav-drawer-mobile nav .e-navigation-wrapper .e-list-navigation > li.active .e-sublist-navigation {
@@ -7414,10 +7419,9 @@ div[id^="components-"] .e-paper-container .e-paper {
 }
 .nav-logo {
   float: left;
-  margin-left: 13px;
   margin-right: 10px;
   margin-top: 13px;
-  max-width: 35px;
+  max-width: 40px;
 }
 pre {
   max-width: 100%;
@@ -7526,4 +7530,7 @@ blockquote .e-divider.thick.short {
 #components-cards-left-image .left-image img {
   width: 113px;
   height: 142px;
+}
+.icon-container i:hover {
+  color: #5c6bc0;
 }

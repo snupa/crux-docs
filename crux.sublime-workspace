@@ -159,23 +159,15 @@
 			"file": "less/crux.less",
 			"settings":
 			{
-				"buffer_size": 481,
+				"buffer_size": 592,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/components-system.html",
+			"file": "less/essence.less",
 			"settings":
 			{
-				"buffer_size": 3662,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/components-install.html",
-			"settings":
-			{
-				"buffer_size": 4581,
+				"buffer_size": 1850,
 				"line_ending": "Windows"
 			}
 		}
@@ -220,18 +212,23 @@
 	"expanded_folders":
 	[
 		"/C/wamp/www/crux-docs",
-		"/C/wamp/www/crux-docs/less/essence/dividers",
-		"/C/wamp/www/crux-docs/less/essence/site-components",
 		"/C/wamp/www/crux-docs/public",
 		"/C/wamp/www/crux-docs/public/assets"
 	],
 	"file_history":
 	[
-		"/C/wamp/www/crux-docs/less/essence/site-components/site-components.less",
-		"/C/wamp/www/crux-docs/public/components-install.html",
-		"/C/wamp/www/crux-docs/less/essence.less",
 		"/C/wamp/www/crux-docs/public/index.html",
+		"/C/wamp/www/crux-docs/public/components-system.html",
+		"/C/wamp/www/crux-docs/public/components-service.html",
+		"/C/wamp/www/crux-docs/public/components-server.html",
+		"/C/wamp/www/crux-docs/public/components-sequelize.html",
+		"/C/wamp/www/crux-docs/public/components-redis.html",
+		"/C/wamp/www/crux-docs/public/components-mongoose.html",
+		"/C/wamp/www/crux-docs/public/components-install.html",
 		"/C/wamp/www/crux-docs/public/components-home.html",
+		"/C/wamp/www/crux-docs/node_modules/node-crux/boilerplate/build-angular/public/js/dist/angular.min.js",
+		"/C/wamp/www/crux-docs/less/essence/site-components/site-components.less",
+		"/C/wamp/www/crux-docs/less/essence.less",
 		"/C/wamp/www/crux-docs/node_modules/node-crux/node_modules/browser-sync/node_modules/browser-sync-ui/node_modules/weinre/web/doc/Running.html",
 		"/C/wamp/www/essence/static/components-colors.html",
 		"/C/wamp/www/essence/static/components-typography.html",
@@ -354,6 +351,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"brick",
+			"e-subhead e-margin-bottom-5",
+			"e-display-2 e-text-green-500",
+			"e-subhead e-margin-bottom-5",
+			"<div class=\"e-text-center\">\n                    <img class=\"e-img-rsp e-padding-top-50 e-padding-bottom-50\" src=\"../assets/img/crux-logo-grey.png\" alt=\"Crux\">\n                </div>",
+			"e-margin-bottom-55",
+			"e-subhead",
+			"e-display-2 e-text-green-500",
+			"<div class=\"e-text-center\">\n                    <img class=\"e-img-rsp e-padding-top-50 e-padding-bottom-50\" src=\"../assets/img/crux-logo-grey.png\" alt=\"Crux\">\n                </div>",
+			"e-margin-bottom-5",
+			"e-subhead",
+			"e-display-2 e-text-green-500",
+			" e-margin-bottom-15",
+			"e-subhead",
+			"e-display-2 e-text-green-500",
 			"/b",
 			"<b>",
 			"e-subhead",
@@ -466,22 +478,7 @@
 			"e-subhead",
 			"Label ",
 			"label",
-			"Label",
-			"label",
-			"Label",
-			"icon-container",
-			"raised",
-			"body2",
-			"raised",
-			"e-subhead e-text-blue-600",
-			"e-subhead ",
-			"400",
-			"e-subhead",
-			"e-text-green-500",
-			"jpg",
-			"contact",
-			".3.2",
-			"components-contact-reactjs"
+			"Label"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -511,15 +508,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 481,
+						"buffer_size": 592,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								451,
-								451
+								175,
+								175
 							]
 						],
 						"settings":
@@ -527,61 +524,61 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
 							"syntax": "Packages/LESS/LESS.tmLanguage",
 							"translate_tabs_to_spaces": false
@@ -595,31 +592,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "public/components-system.html",
-					"semi_transient": false,
+					"file": "less/essence.less",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 3662,
+						"buffer_size": 1850,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1650,
-								1650
-							],
-							[
-								2718,
-								2718
-							],
-							[
-								3184,
-								3184
-							],
-							[
-								3535,
-								3535
+								0,
+								0
 							]
 						],
 						"settings":
@@ -627,160 +612,69 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/LESS/LESS.tmLanguage"
 						},
-						"translation.x": 0.0,
+						"translation.x": -0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "public/components-install.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4581,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4427,
-								4451
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
-							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 378.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
 					"type": "text"
 				}
 			]
