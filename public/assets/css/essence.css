@@ -7384,12 +7384,16 @@ div[id^="components-"] .e-paper-container .e-paper {
 #navigationMenu .e-nav-drawer nav .e-navigation-wrapper .e-list-navigation > li > a,
 #navigationMenu .e-nav-drawer-mobile nav .e-navigation-wrapper .e-list-navigation > li > a {
   color: #78909c;
-  padding: 0 16px;
+  padding: 0 16px 0 54px;
   text-transform: uppercase;
 }
 #navigationMenu .e-nav-drawer nav .e-navigation-wrapper .e-list-navigation > li > a i,
 #navigationMenu .e-nav-drawer-mobile nav .e-navigation-wrapper .e-list-navigation > li > a i {
   display: none;
+}
+#navigationMenu .e-nav-drawer nav .e-navigation-wrapper .e-list-navigation > li:first-child,
+#navigationMenu .e-nav-drawer-mobile nav .e-navigation-wrapper .e-list-navigation > li:first-child {
+  background-image: url();
 }
 #navigationMenu .e-nav-drawer nav .e-navigation-wrapper .e-list-navigation > li .e-sublist-navigation li > a,
 #navigationMenu .e-nav-drawer-mobile nav .e-navigation-wrapper .e-list-navigation > li .e-sublist-navigation li > a {
