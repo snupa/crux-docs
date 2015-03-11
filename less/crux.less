@@ -1,6 +1,13 @@
 
 .e-main-content {
 	min-height: 1000px;
+	.home-header {
+		top: 0;
+		img {
+			max-height: 150px;
+		}
+	}
+	
 }
 #navigationMenu {
 	margin-top: 0;
@@ -19,12 +26,42 @@
 		display: none;
 	}
 	.e-list-navigation {
+		> li > a {
+			position: relative;
+			&:before {
+				content: "";
+				display: block;
+				width: 18px;
+				height: 18px;
+				position: absolute;
+				left: 30px;
+				top: 50%;
+				margin-top: -10px;
+		        background-repeat: no-repeat;
+		        background-size: contain;
+		        opacity: 0.6;
+	    	}
+		}
+		> li.active > a {
+			&:before {
+				opacity: 1;
+			}
+		}
 		> li:first-child a {
-        background-image: url(../public/assets/img/house.png);
-        background-size: 20px 30px;
-        background-repeat: no-repeat;
-        background-position: 0 5px;
-      }
+			&:before {
+				background-image: url(../img/house.png);
+			}
+		}
+		> li:nth-child(2) a {
+			&:before {
+				background-image: url(../img/registry.png);
+			}
+		}
+		> li:nth-child(3) a {
+			&:before {
+				background-image: url(../img/files.png);
+			}
+		}
 	}
 	.e-sublist-navigation li a {
 		&:hover,

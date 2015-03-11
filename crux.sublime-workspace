@@ -4,12 +4,28 @@
 		"selected_items":
 		[
 			[
-				"margin",
-				"margin"
+				"max",
+				"max-height"
+			],
+			[
+				"bac",
+				"background-size"
+			],
+			[
+				"ba",
+				"background-position"
+			],
+			[
+				"back",
+				"background-size"
 			],
 			[
 				"padding",
-				"padding"
+				"padding-left"
+			],
+			[
+				"margin",
+				"margin"
 			],
 			[
 				"padd",
@@ -108,10 +124,6 @@
 				"divider-thinnest"
 			],
 			[
-				"back",
-				"background-color"
-			],
-			[
 				"gre",
 				" green(color)"
 			],
@@ -159,15 +171,15 @@
 			"file": "less/crux.less",
 			"settings":
 			{
-				"buffer_size": 592,
+				"buffer_size": 1264,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "less/essence.less",
+			"file": "public/components-home.html",
 			"settings":
 			{
-				"buffer_size": 1850,
+				"buffer_size": 1718,
 				"line_ending": "Windows"
 			}
 		}
@@ -212,11 +224,14 @@
 	"expanded_folders":
 	[
 		"/C/wamp/www/crux-docs",
+		"/C/wamp/www/crux-docs/less/essence/site-components",
 		"/C/wamp/www/crux-docs/public",
 		"/C/wamp/www/crux-docs/public/assets"
 	],
 	"file_history":
 	[
+		"/C/wamp/www/crux-docs/less/essence/site-components/site-components.less",
+		"/C/wamp/www/crux-docs/less/essence.less",
 		"/C/wamp/www/crux-docs/public/index.html",
 		"/C/wamp/www/crux-docs/public/components-system.html",
 		"/C/wamp/www/crux-docs/public/components-service.html",
@@ -227,8 +242,6 @@
 		"/C/wamp/www/crux-docs/public/components-install.html",
 		"/C/wamp/www/crux-docs/public/components-home.html",
 		"/C/wamp/www/crux-docs/node_modules/node-crux/boilerplate/build-angular/public/js/dist/angular.min.js",
-		"/C/wamp/www/crux-docs/less/essence/site-components/site-components.less",
-		"/C/wamp/www/crux-docs/less/essence.less",
 		"/C/wamp/www/crux-docs/node_modules/node-crux/node_modules/browser-sync/node_modules/browser-sync-ui/node_modules/weinre/web/doc/Running.html",
 		"/C/wamp/www/essence/static/components-colors.html",
 		"/C/wamp/www/essence/static/components-typography.html",
@@ -351,6 +364,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"green-500",
+			"li",
+			"20px",
+			"ComponentsList.js",
+			"navigationMenu",
 			"brick",
 			"e-subhead e-margin-bottom-5",
 			"e-display-2 e-text-green-500",
@@ -473,12 +491,7 @@
 			"e-display-1 e-text-indigo-400",
 			"e-subhead",
 			"e-subhead e-text-blue-600",
-			"e-text-green-500",
-			"e-subhead e-text-blue-600",
-			"e-subhead",
-			"Label ",
-			"label",
-			"Label"
+			"e-text-green-500"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -499,7 +512,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -508,15 +521,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 592,
+						"buffer_size": 1264,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								175,
-								175
+								368,
+								368
 							]
 						],
 						"settings":
@@ -587,24 +600,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "less/essence.less",
-					"semi_transient": true,
+					"file": "public/components-home.html",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1850,
+						"buffer_size": 1718,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1717,
+								1717
 							]
 						],
 						"settings":
@@ -668,13 +681,15 @@
 								"bh_tag_close",
 								"bh_tag_content"
 							],
-							"syntax": "Packages/LESS/LESS.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]

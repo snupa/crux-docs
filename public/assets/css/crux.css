@@ -1,6 +1,12 @@
 .e-main-content {
   min-height: 1000px;
 }
+.e-main-content .home-header {
+  top: 0;
+}
+.e-main-content .home-header img {
+  max-height: 150px;
+}
 #navigationMenu {
   margin-top: 0;
 }
@@ -18,11 +24,33 @@
 #navigationMenu .e-nav-footer {
   display: none;
 }
-#navigationMenu .e-list-navigation > li:first-child a {
-  background-image: url(../public/assets/img/house.png);
-  background-size: 20px 30px;
+#navigationMenu .e-list-navigation > li > a {
+  position: relative;
+}
+#navigationMenu .e-list-navigation > li > a:before {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  margin-top: -10px;
   background-repeat: no-repeat;
-  background-position: 0 5px;
+  background-size: contain;
+  opacity: 0.6;
+}
+#navigationMenu .e-list-navigation > li.active > a:before {
+  opacity: 1;
+}
+#navigationMenu .e-list-navigation > li:first-child a:before {
+  background-image: url(../img/house.png);
+}
+#navigationMenu .e-list-navigation > li:nth-child(2) a:before {
+  background-image: url(../img/registry.png);
+}
+#navigationMenu .e-list-navigation > li:nth-child(3) a:before {
+  background-image: url(../img/files.png);
 }
 #navigationMenu .e-sublist-navigation li a:hover,
 #navigationMenu .e-sublist-navigation li a:focus {
