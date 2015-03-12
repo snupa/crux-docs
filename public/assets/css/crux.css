@@ -1,14 +1,18 @@
 .e-main-content {
-  min-height: 1000px;
+  min-height: 1250px;
 }
 .e-main-content .home-header {
   top: 0;
 }
 .e-main-content .home-header img {
   max-height: 150px;
+  padding-left: 30px;
+  padding-right: 30px;
+  box-sizing: border-box;
 }
 #navigationMenu {
   margin-top: 0;
+  z-index: 4;
 }
 #navigationMenu .e-nav-header {
   position: relative;
