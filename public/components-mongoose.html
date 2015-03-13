@@ -2,17 +2,19 @@
 <div class="e-container">
     <div id="components-mongoose">
         <div class="clearfix">
-            <div class="e-brick-12 e-padding-top-50 e-padding-bottom-50">
-                <h3 class="e-display-2 e-text-green-500">What is it?</h3>
-                <p class="e-subhead e-margin-bottom-15">Wrapper over Mongoose to promisify the queries, and exposes a similar model-definition API like Sequelize.
+            <div class="brick brick-12 e-padding-top-100 e-padding-bottom-75">
+                <h3 class="e-display-1 e-text-uppercase e-text-green-500 e-padding-top-25">What is it?</h3>
+                <div class="e-divider thick short e-background-green-500"></div>
+                <p class="e-body1 e-text-blue-grey-400">Wrapper over Mongoose to promisify the queries, and exposes a similar model-definition API like Sequelize.
                 The system will also perform schema auto-loading and handle relationships between schemas.</p>
-                <p>
-                    See <a target="_blank" href="/docs/crux.Database.Mongo.html">API Documentation</a>.
+                <p class="e-body1 e-text-blue-grey-400">
+                    See <a target="_blank" href="/docs/crux.Database.Mongo.html" class="e-text-green-500">API Documentation</a>.
                 </p>
-                <h3 class="e-display-2 e-text-green-500">What it does?</h3>
-                <p class="e-subhead e-margin-bottom-5">Auto-load schema definitions along with their relationships</p>
-                <p class="e-subhead e-margin-bottom-15">Inject "this.schema(name)" functionality in various parts of the application (service-level, route-level, other components)</p>
-<pre class="code">
+                <h3 class="e-display-1 e-text-uppercase e-text-green-500">What it does?</h3>
+                <div class="e-divider thick short e-background-green-500"></div>
+                <p class="e-body1 e-text-blue-grey-400">Auto-load schema definitions along with their relationships.</p>
+                <p class="e-body1 e-text-blue-grey-400 e-margin-bottom-15">Inject "this.schema(name)" functionality in various parts of the application (service-level, route-level, other components).</p>
+<pre class="e-paper e-shadow-2">
 // current schema file: schemas/user.js
    module.exports = function(userSchema, Mongo) {
      userSchema.collection('users'); // this will set the mongodb collection name from user to users
@@ -31,9 +33,6 @@
          .belongsTo('application');  // this generates the mongo property application_id of type ObjectId
    };
 </pre>
-                <div class="e-text-center">
-                    <img class="e-img-rsp e-padding-top-50 e-padding-bottom-50" src="../assets/img/crux-logo-grey.png" alt="Crux">
-                </div>
             </div>
         </div>
     </div>

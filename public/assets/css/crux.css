@@ -1,0 +1,69 @@
+.e-main-content {
+  min-height: 1250px;
+}
+.e-main-content .home-header {
+  top: 0;
+}
+.e-main-content .home-header img {
+  max-height: 150px;
+  padding-left: 30px;
+  padding-right: 30px;
+  box-sizing: border-box;
+}
+#navigationMenu {
+  margin-top: 0;
+  z-index: 4;
+}
+#navigationMenu .e-nav-header {
+  position: relative;
+}
+#navigationMenu .e-nav-header .nav-logo {
+  position: absolute;
+  top: 50%;
+  left: 32px;
+  margin: -18px 0 0;
+  max-width: 92px;
+  float: none;
+}
+#navigationMenu .e-nav-footer {
+  display: none;
+}
+#navigationMenu .e-list-navigation > li > a {
+  position: relative;
+}
+#navigationMenu .e-list-navigation > li > a:before {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  margin-top: -10px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.6;
+}
+#navigationMenu .e-list-navigation > li.active > a:before {
+  opacity: 1;
+}
+#navigationMenu .e-list-navigation > li:first-child a:before {
+  background-image: url(../img/house.png);
+}
+#navigationMenu .e-list-navigation > li:nth-child(2) a:before {
+  background-image: url(../img/registry.png);
+}
+#navigationMenu .e-list-navigation > li:nth-child(3) a:before {
+  background-image: url(../img/files.png);
+}
+#navigationMenu .e-sublist-navigation li a:hover,
+#navigationMenu .e-sublist-navigation li a:focus {
+  color: #4caf50 !important;
+}
+.e-footer a:hover {
+  color: #1b5e20;
+}
+#components-home-page > .e-container h3 > a:hover,
+p > a.e-text-green-500:hover {
+  color: #2e7d32 !important;
+}

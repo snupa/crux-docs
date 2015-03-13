@@ -1,2 +1,83 @@
-body {
+
+.e-main-content {
+	min-height: 1250px;
+	.home-header {
+		top: 0;
+		img {
+			max-height: 150px;
+			padding-left: 30px;
+			padding-right: 30px;
+			box-sizing: border-box;
+		}
+	}
+	
 }
+#navigationMenu {
+	margin-top: 0;
+	z-index: 4;
+	.e-nav-header {
+		position: relative;
+		.nav-logo {
+			position: absolute;
+			top: 50%;
+			left: 32px;
+			margin: -18px 0 0;
+			max-width: 92px;
+			float: none;
+		}
+	}
+	.e-nav-footer {
+		display: none;
+	}
+	.e-list-navigation {
+		> li > a {
+			position: relative;
+			&:before {
+				content: "";
+				display: block;
+				width: 18px;
+				height: 18px;
+				position: absolute;
+				left: 30px;
+				top: 50%;
+				margin-top: -10px;
+		        background-repeat: no-repeat;
+		        background-size: contain;
+		        opacity: 0.6;
+	    	}
+		}
+		> li.active > a {
+			&:before {
+				opacity: 1;
+			}
+		}
+		> li:first-child a {
+			&:before {
+				background-image: url(../img/house.png);
+			}
+		}
+		> li:nth-child(2) a {
+			&:before {
+				background-image: url(../img/registry.png);
+			}
+		}
+		> li:nth-child(3) a {
+			&:before {
+				background-image: url(../img/files.png);
+			}
+		}
+	}
+	.e-sublist-navigation li a {
+		&:hover,
+		&:focus {
+			color: #4caf50 !important;
+		}
+	}	
+}
+.e-footer a:hover {
+	color: #1b5e20;
+}
+#components-home-page > .e-container h3 > a:hover,
+p > a.e-text-green-500:hover {
+	color: #2e7d32 !important;
+} 
