@@ -1,9 +1,11 @@
 @import "../bower_components/bootstrap/less/bootstrap";
 @import "variables";
 @import "bootswatch";
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,700,500);
 
 @headerHeight: 48px;
 html body {
+  font-family: 'Roboto', sans-serif;
   #main {
   > .page-title:first-child {
     display: none;
@@ -25,10 +27,38 @@ a {
 #main {
   min-height: 1000px;
 }
-.navmenu {
+.main-content {
+  padding-top: 94px;
+}
+.e-appbar {
+  box-sizing: border-box;
+  height: 64px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 3px 3px rgba(0, 0, 0, 0.28);
+  font-size: 24px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 777;
+  color: #fff;
+  background-color: #4caf50;
+  span {
+    display: block;
+    line-height: 62px;
+  }
   .nav-back {
     display: block;
-    margin: 15px 0 15px 15px;
+    margin-left: 15px;
+  }
+}
+
+.navmenu {
+
+  .nav > li > a {
+    color: #78909c;
+    font-size: 14px;
+    b.caret {
+      margin-left: 10px;
+    }
   }
   .nav > li > a:hover, .nav > li > a:focus {
     background: none;
@@ -36,7 +66,7 @@ a {
   .dropdown-menu {
     position: relative;
 	a, a:visited {
-	  color : @navbar-inverse-link-color;
+	  color : #78909c;
 	}
 	a:hover {
 	  color          : @navbar-inverse-bg;
@@ -178,7 +208,7 @@ a {
 
 footer {
   border-top  : 1px solid  @navbar-inverse-link-hover-bg;
-  padding-top : 15px;
+  padding : 15px 0;
 }
 
 code {

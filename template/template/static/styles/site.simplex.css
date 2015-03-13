@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,700,500);
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -6529,6 +6530,9 @@ button.close {
     display: none !important;
   }
 }
+html body {
+  font-family: 'Roboto', sans-serif;
+}
 html body #main > .page-title:first-child {
   display: none;
 }
@@ -6538,9 +6542,35 @@ html body a {
 html body #main {
   min-height: 1000px;
 }
-html body .navmenu .nav-back {
+html body .main-content {
+  padding-top: 94px;
+}
+html body .e-appbar {
+  box-sizing: border-box;
+  height: 64px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 3px 3px rgba(0, 0, 0, 0.28);
+  font-size: 24px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 777;
+  color: #fff;
+  background-color: #4caf50;
+}
+html body .e-appbar span {
   display: block;
-  margin: 15px 0 15px 15px;
+  line-height: 62px;
+}
+html body .e-appbar .nav-back {
+  display: block;
+  margin-left: 15px;
+}
+html body .navmenu .nav > li > a {
+  color: #78909c;
+  font-size: 14px;
+}
+html body .navmenu .nav > li > a b.caret {
+  margin-left: 10px;
 }
 html body .navmenu .nav > li > a:hover,
 html body .navmenu .nav > li > a:focus {
@@ -6551,7 +6581,7 @@ html body .navmenu .dropdown-menu {
 }
 html body .navmenu .dropdown-menu a,
 html body .navmenu .dropdown-menu a:visited {
-  color: #b5dfb7;
+  color: #78909c;
 }
 html body .navmenu .dropdown-menu a:hover {
   color: #4caf50;
@@ -6683,7 +6713,7 @@ html body .page-title:after {
 }
 html body footer {
   border-top: 1px solid #6ec071;
-  padding-top: 15px;
+  padding: 15px 0;
 }
 html body code {
   background-color: transparent;
