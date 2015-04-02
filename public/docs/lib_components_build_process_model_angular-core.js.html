@@ -13,67 +13,62 @@
 	<link type="text/css" rel="stylesheet" href="styles/site.simplex.css">
 
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header go-back">
-		<span class="nav-back">
-			<a href="http://crux.pearlhq.com/">Official site</a>
-		</span>
-	</div>
-	<div class="navbar-header">
-		<a href="index.html" class="crux-logo">
-			<img class="nav-logo" alt="&nbsp;" src="/assets/img/crux-green.png" data-reactid=".0.0.0.0.0.0" />
-		</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="crux.html">crux</a></li><li><a href="crux.Build.html">crux.Build</a></li><li><a href="crux.Build.Angular.html">crux.Build.Angular</a></li><li><a href="crux.Database.html">crux.Database</a></li><li><a href="crux.Server.html">crux.Server</a></li><li><a href="crux.Store.html">crux.Store</a></li><li><a href="crux.util.html">crux.util</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="crux.Application.html">crux.Application</a></li><li><a href="crux.Build.Angular.Core.html">crux.Build.Angular.Core</a></li><li><a href="crux.Build.Angular.Index.html">crux.Build.Angular.Index</a></li><li><a href="crux.Build.Angular.Templates.html">crux.Build.Angular.Templates</a></li><li><a href="crux.Build.Build.html">crux.Build.Build</a></li><li><a href="crux.Build.Commonjs.html">crux.Build.Commonjs</a></li><li><a href="crux.Build.Interface.html">crux.Build.Interface</a></li><li><a href="crux.Build.Less.html">crux.Build.Less</a></li><li><a href="crux.Build.Sass.html">crux.Build.Sass</a></li><li><a href="crux.Build.Templates.html">crux.Build.Templates</a></li><li><a href="crux.Component.html">crux.Component</a></li><li><a href="crux.Database.Mongo.html">crux.Database.Mongo</a></li><li><a href="crux.Database.Mongo.Schema.html">crux.Database.Mongo.Schema</a></li><li><a href="crux.Database.Sql.html">crux.Database.Sql</a></li><li><a href="crux.Database.Sql.Model.html">crux.Database.Sql.Model</a></li><li><a href="crux.Registry.html">crux.Registry</a></li><li><a href="crux.Server.Chain.html">crux.Server.Chain</a></li><li><a href="crux.Server.Request.html">crux.Server.Request</a></li><li><a href="crux.Server.Route.html">crux.Server.Route</a></li><li><a href="crux.Server.Server.html">crux.Server.Server</a></li><li><a href="crux.Server.Utils.html">crux.Server.Utils</a></li><li><a href="crux.Server.Validations.html">crux.Server.Validations</a></li><li><a href="crux.Store.Redis.html">crux.Store.Redis</a></li><li><a href="crux.util.install.html">crux.util.install</a></li><li><a href="crux.util.Parser.html">crux.util.Parser</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="interfaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Interfaces<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="crux.Service.html">crux.Service</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html#_">_</a></li><li><a href="global.html#__rootdir">__rootdir</a></li><li><a href="global.html#log">log</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-	</div>
-</div>
-</div>
 
 
-<div class="container">
-<div class="row">
 
-	
-	<div class="col-md-12">
-	
-		<div id="main">
-    		<h1 class="page-title">Source: lib/components/build/process/model/angular-core.js</h1>
-			
+<div class="main-content clearfix">
+  <div class="e-appbar clearfix">
+    <div class="col-xs-12">
+      <div class="go-back">
+          <span class="nav-back">
+              <a href="http://crux.pearlhq.com/"><img class="nav-logo" alt="&nbsp;" src="/assets/img/crux-white-small.png" data-reactid=".0.0.0.0.0.0" /></a>
+          </span>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix">
+    <div class="navmenu col-xs-2">
+      <div class="">
+          <ul class="nav navbar-nav">
+              
+              <li class="dropdown">
+                  <a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+                  <ul class="dropdown-menu ">
+                      <li><a href="crux.html">crux</a></li><li><a href="crux.Build.html">crux.Build</a></li><li><a href="crux.Build.Angular.html">crux.Build.Angular</a></li><li><a href="crux.Database.html">crux.Database</a></li><li><a href="crux.Server.html">crux.Server</a></li><li><a href="crux.Store.html">crux.Store</a></li><li><a href="crux.util.html">crux.util</a></li>
+                  </ul>
+              </li>
+              
+              <li class="dropdown">
+                  <a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+                  <ul class="dropdown-menu ">
+                      <li><a href="crux.Application.html">crux.Application</a></li><li><a href="crux.Build.Angular.Core.html">crux.Build.Angular.Core</a></li><li><a href="crux.Build.Angular.Index.html">crux.Build.Angular.Index</a></li><li><a href="crux.Build.Angular.Templates.html">crux.Build.Angular.Templates</a></li><li><a href="crux.Build.Build.html">crux.Build.Build</a></li><li><a href="crux.Build.Commonjs.html">crux.Build.Commonjs</a></li><li><a href="crux.Build.Interface.html">crux.Build.Interface</a></li><li><a href="crux.Build.Less.html">crux.Build.Less</a></li><li><a href="crux.Build.Sass.html">crux.Build.Sass</a></li><li><a href="crux.Build.Templates.html">crux.Build.Templates</a></li><li><a href="crux.Component.html">crux.Component</a></li><li><a href="crux.Database.Mongo.html">crux.Database.Mongo</a></li><li><a href="crux.Database.Mongo.Schema.html">crux.Database.Mongo.Schema</a></li><li><a href="crux.Database.Sql.html">crux.Database.Sql</a></li><li><a href="crux.Database.Sql.Model.html">crux.Database.Sql.Model</a></li><li><a href="crux.Registry.html">crux.Registry</a></li><li><a href="crux.Server.Chain.html">crux.Server.Chain</a></li><li><a href="crux.Server.Request.html">crux.Server.Request</a></li><li><a href="crux.Server.Route.html">crux.Server.Route</a></li><li><a href="crux.Server.Server.html">crux.Server.Server</a></li><li><a href="crux.Server.Utils.html">crux.Server.Utils</a></li><li><a href="crux.Server.Validations.html">crux.Server.Validations</a></li><li><a href="crux.Store.Redis.html">crux.Store.Redis</a></li><li><a href="crux.util.install.html">crux.util.install</a></li><li><a href="crux.util.Parser.html">crux.util.Parser</a></li>
+                  </ul>
+              </li>
+              
+              <li class="dropdown">
+                  <a href="interfaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Interfaces<b class="caret"></b></a>
+                  <ul class="dropdown-menu ">
+                      <li><a href="crux.Service.html">crux.Service</a></li>
+                  </ul>
+              </li>
+              
+              <li class="dropdown">
+                  <a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+                  <ul class="dropdown-menu ">
+                      <li><a href="global.html#_">_</a></li><li><a href="global.html#__rootdir">__rootdir</a></li><li><a href="global.html#log">log</a></li>
+                  </ul>
+              </li>
+              
+          </ul>
+      </div>
+    </div>
+
+    <div class="col-xs-10">
+        <div id="main">
+            <h1 class="page-title">Source: lib/components/build/process/model/angular-core.js</h1>
+            
 
 		<h1 class="page-title">Source: lib/components/build/process/model/angular-core.js</h1>
     
@@ -103,6 +98,7 @@ var Interface = require('../../interface');
  * @param {String} [config.extension=.js] - default javaScript file extension
  * @param {String} [config.path=front/app] - angular root folder path
  * @param {String} [config.entry=app.js] - main angular application file
+ * @param {String} [config.include=[]] - an array of paths relative to the root directory to include when building the file. These files will be treated as a subdirectory of the angular directory project.
  * @param {String} [config.output=public/js/build/$module.angular.js] - output path for the built javaScript file. Note that &lt;b>$module&lt;/b> may be used in the path, and is angular's module name of the process
  * @param {String} [config.module=app] - angular module name.
  * @param {String} [config.config=config/$environment.js] - configuration files to be loaded while building. Note that the &lt;b>$environment&lt;b/> is available in this path, representing crux's environment name
@@ -112,16 +108,16 @@ var Interface = require('../../interface');
  * @property {Object} CACHE - cache object containing the cached js file contents
 * */
 
-var core = function CruxBuildAngularCore(config) {
-  Interface.call(this, config.extension || 'js');
-  this.config = config; // This configuration is the config situated under angular.templates config in the parent process
-  this.name = 'angular:core';
+var core = function CruxBuildAngularCore(config, name) {
+  Interface.apply(this, arguments);
+  this.name = name + ':core';
   this.config.output = this.config.output.replace('$module', this.config.module).replace('$environment', global['NODE_ENV']);
   this.config.path = this.__fullPath(this.config.path);
   this.CACHE = {};
   this.FILE_CACHE = [];
   if(this.config.config.indexOf('$environment') !== -1) {
     this.config.config = this.config.config.replace('$environment', global['NODE_ENV']);
+    this.config.config = path.normalize(this.config.path + '/' + this.config.config).replace(/\\/g, "/");
   }
 };
 util.inherits(core, Interface);
@@ -135,6 +131,8 @@ core.default = {
   compile: null,  // As like angular-templates, this can be a function that will be called when we parse a js file.
   priority: [],   // This is an array of js files (relative to path!) that we will match and load first, before we load the entire directory structure
   output: 'public/js/build/$module.angular.js',
+  include: [],    // An array of paths relative to the root directory to include when compiling.
+  exclude: [],
   module: 'app'
 };
 
@@ -171,9 +169,12 @@ core.prototype.cache = function CacheFile(path, content) {
 * */
 core.prototype.minify = function MinifyJs(content) {
   // TODO
-  content = content.replace(/\n{2,}/g, '\n');
   // Remove comments
+  //content = content.replace(/(\/\*[\w\'\s\r\n\*]*\*\/)|(\/\/[\w\s\']*)|(\&lt;![\-\-\s\w\>\/]*\>)/gm, '');
   content = content.replace(/(?:\/\*(?:[\s\S]*?)\*\/)|(?:([\s;])+\/\/(?:.*)$)/gm, ' ');
+  content = content.replace(/(\n|\r\n){2,}/g, '\n');
+  // Multiple spaces.
+  content = content.replace(/ +(?= )/g,'');
   return content;
 };
 
@@ -196,10 +197,26 @@ core.prototype.compile = function CompileAngular(_done) {
   var sorted = [],
     done = (typeof _done !== 'function' ? function(){} : _done);
   var temp = this.FILE_CACHE.concat([]);
+  for(var i=0; i &lt; temp.length; i++) {
+    temp[i] = temp[i].replace(/\\/g, "/");
+  }
   // We first go through the priority list to add stuff.
   for(var i=0; i &lt; this.config.priority.length; i++) {
     var prio = this.config.priority[i];
-    if(prio.charAt(0) === '/' || prio.charAt(0) === '\\') prio = prio.substr(1);
+    prio = prio.replace(/\\/g, "/");
+    // We first check if it is from included paths or config path
+    var isIncluded = false;
+    for(var j=0; j &lt; this.config.include.length; j++) {
+      if(prio.indexOf(this.config.include[j]) === 0) {
+        prio = path.normalize(__rootdir + '/' + prio);
+        isIncluded = true;
+      }
+    }
+    if(!isIncluded) {
+      prio = path.normalize(this.config.path + '/' + prio);
+    }
+    prio = prio.replace(/\\/g,"/");
+    // We have to create the file path of each item in the priority
     var q = 0;
     while(q &lt; temp.length) {
       var fpath = temp[q];
@@ -259,6 +276,9 @@ core.prototype.compile = function CompileAngular(_done) {
   }
   JS_CONTENT += "})(window, window['angular'] || {}, window['jQuery'] || window['$'] || {}, undefined);";
   // We now output the final content.
+  if(this.config.minify) {
+    JS_CONTENT = this.minify(JS_CONTENT);
+  }
   this.output(JS_CONTENT, done);
 };
 
@@ -272,14 +292,22 @@ core.prototype.compile = function CompileAngular(_done) {
 core.prototype.watch = function WatchAngularCore(done) {
   if(!fs.existsSync(this.config.path)) return done();
   var self = this;
-  this.__watch(this.config.path, this.config.extension, function onChange(jsPath, content) {
+  function onChange(jsPath, content) {
     // We check if the file is newly added, so that we can re-create the file path array
     if(typeof self.CACHE[jsPath] === 'undefined' || content === null) {
       self.__readFiles();
     }
     self.cache(jsPath, content);
     self.compile();
-  }, done);
+  }
+  this.__watch(this.config.path, this.config.extension, onChange, done);
+  // we have to do the same for the included files.
+  if(this.config.include.length > 0) {
+    _.forEach(this.config.include, function(includePath) {
+      var watchPath = path.normalize(__rootdir + '/' + includePath);
+      self.__watch(watchPath, self.config.extension, onChange, done);
+    });
+  }
 };
 
 /**
@@ -291,14 +319,50 @@ core.prototype.watch = function WatchAngularCore(done) {
 * */
 core.prototype.__readFiles = function ReadFiles() {
   try {
-    var files = Kutil.readDirectoryRelative(this.config.path, this.config.extension);
+    var files = Kutil.readDirectoryRelative(this.config.path, this.config.extension),
+      includes = this.config.include;
     this.FILE_CACHE = [];
-    // We now exclude all other config/ stuff in the files.
+    // We now exclude all other config/ stuff in the files. and add the relative path to the project app
     for(var i=0; i &lt; files.length; i++) {
+      var jsPath = path.normalize(this.config.path + '/' + files[i]).replace(/\\/g,"/");
+      files[i] = jsPath;
       if(files[i].indexOf('config/') !== -1 &amp;&amp; this.config.config !== files[i]) {
         continue;
       }
       this.FILE_CACHE.push(files[i]);
+    }
+    if(includes.length > 0) {
+      for(var j=0; j &lt; includes.length; j++) {
+        var iPath = includes[j];
+        if(iPath.charAt(iPath.length-1) === '/') {
+          iPath = iPath.substr(0, iPath.length-1);
+        }
+        if(typeof iPath !== 'string' || iPath === '') continue;
+        try {
+          var iFiles = Kutil.readDirectoryRelative(iPath, this.config.extension);
+          for(var k=0; k &lt; iFiles.length; k++) {
+            var iFinalPath = path.normalize(__rootdir + '/' + iPath + iFiles[k]).replace(/\\/g,"/");
+            this.FILE_CACHE.push(iFinalPath);
+          }
+        } catch(e) {
+          continue;
+        }
+      }
+    }
+    // We check for exclusions.
+    if(this.config.exclude.length !== 0) {
+      for(var i=0; i &lt; this.config.exclude.length; i++) {
+        var toExclude = path.normalize(__rootdir + '/' + this.config.exclude[i]).replace(/\\/g, '/'),
+          k = 0;
+        while(k &lt; this.FILE_CACHE.length) {
+          var cacheFile = this.FILE_CACHE[k];
+          if(cacheFile.indexOf(toExclude) === 0) {
+            this.FILE_CACHE.splice(k, 1);
+          } else {
+            k++;
+          }
+        }
+      }
     }
     return this.FILE_CACHE;
   } catch(e) {
@@ -317,7 +381,6 @@ core.prototype.__readFiles = function ReadFiles() {
 * */
 core.prototype.__readFile = function ReadJsFile(jsPath) {
   try {
-    jsPath = path.normalize(this.config.path + '/' + jsPath);
     return fs.readFileSync(jsPath, { encoding: 'utf8' });
   } catch(e) {
     return e;
@@ -360,14 +423,10 @@ module.exports = core;</pre>
 
 
 
-		</div>
-	</div>
+        </div>
+    </div>
 
-	<div class="clearfix"></div>
-
-	
-
-</div>
+  </div>
 </div>
 
 
@@ -376,7 +435,7 @@ module.exports = core;</pre>
 
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a>
-	on Thu Feb 26th 2015 using the <a
+	on Thu Apr 2nd 2015 using the <a
 	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 </span>
 </footer>
